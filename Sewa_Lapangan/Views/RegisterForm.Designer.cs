@@ -32,23 +32,23 @@
             txtNama = new TextBox();
             label5 = new Label();
             label4 = new Label();
-            btnGoToRegister = new Button();
             btnRegister = new Button();
             txtPassword = new TextBox();
             txtEmail = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            linkToLogin = new LinkLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(linkToLogin);
             panel1.Controls.Add(txtNama);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(btnGoToRegister);
             panel1.Controls.Add(btnRegister);
             panel1.Controls.Add(txtPassword);
             panel1.Controls.Add(txtEmail);
@@ -84,16 +84,6 @@
             label4.Size = new Size(153, 20);
             label4.TabIndex = 6;
             label4.Text = "Sudah memiliki akun?";
-            // 
-            // btnGoToRegister
-            // 
-            btnGoToRegister.Location = new Point(194, 293);
-            btnGoToRegister.Name = "btnGoToRegister";
-            btnGoToRegister.Size = new Size(94, 29);
-            btnGoToRegister.TabIndex = 5;
-            btnGoToRegister.Text = "Login";
-            btnGoToRegister.UseVisualStyleBackColor = true;
-            btnGoToRegister.Click += btnGoToRegister_Click;
             // 
             // btnRegister
             // 
@@ -147,6 +137,17 @@
             label1.TabIndex = 0;
             label1.Text = "REGISTER";
             // 
+            // linkToLogin
+            // 
+            linkToLogin.AutoSize = true;
+            linkToLogin.Location = new Point(317, 270);
+            linkToLogin.Name = "linkToLogin";
+            linkToLogin.Size = new Size(89, 20);
+            linkToLogin.TabIndex = 10;
+            linkToLogin.TabStop = true;
+            linkToLogin.Text = "Login di sini";
+            linkToLogin.LinkClicked += linkToLogin_LinkClicked;
+            // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -164,7 +165,6 @@
 
         private Panel panel1;
         private Label label4;
-        private Button btnGoToRegister;
         private Button btnRegister;
         private TextBox txtPassword;
         private TextBox txtEmail;
@@ -173,5 +173,6 @@
         private Label label1;
         private Label label5;
         private TextBox txtNama;
+        private LinkLabel linkToLogin;
     }
 }

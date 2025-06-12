@@ -36,14 +36,14 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            txtGoToLogin = new Label();
+            LinkToRegister = new LinkLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
-            panel1.Controls.Add(txtGoToLogin);
+            panel1.Controls.Add(LinkToRegister);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(txtPassword);
@@ -88,6 +88,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(352, 27);
             txtEmail.TabIndex = 3;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // label3
             // 
@@ -117,16 +118,16 @@
             label1.TabIndex = 0;
             label1.Text = "LOGIN TO GOSPORT";
             // 
-            // txtGoToLogin
+            // LinkToRegister
             // 
-            txtGoToLogin.AutoSize = true;
-            txtGoToLogin.BackColor = Color.Transparent;
-            txtGoToLogin.Location = new Point(300, 291);
-            txtGoToLogin.Name = "txtGoToLogin";
-            txtGoToLogin.Size = new Size(63, 20);
-            txtGoToLogin.TabIndex = 7;
-            txtGoToLogin.Text = "Register";
-            txtGoToLogin.Click += label5_Click_1;
+            LinkToRegister.AutoSize = true;
+            LinkToRegister.Location = new Point(300, 291);
+            LinkToRegister.Name = "LinkToRegister";
+            LinkToRegister.Size = new Size(63, 20);
+            LinkToRegister.TabIndex = 8;
+            LinkToRegister.TabStop = true;
+            LinkToRegister.Text = "Register";
+            LinkToRegister.LinkClicked += LinkToRegister_LinkClicked;
             // 
             // LoginForm
             // 
@@ -137,6 +138,7 @@
             Controls.Add(panel1);
             Name = "LoginForm";
             Text = "LoginFrom";
+            Load += LoginForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -152,6 +154,6 @@
         private TextBox txtPassword;
         private TextBox txtEmail;
         private Label label4;
-        private Label txtGoToLogin;
+        private LinkLabel LinkToRegister;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sewa_Lapangan.Views.User
 {
-    public partial class UserDashboardForm : Form
+    public partial class PesanLapanganForm : Form
     {
-        public UserDashboardForm()
+        public PesanLapanganForm()
         {
             InitializeComponent();
         }

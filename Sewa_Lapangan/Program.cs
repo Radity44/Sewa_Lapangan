@@ -1,3 +1,5 @@
+using Sewa_Lapangan.Views;
+
 namespace Sewa_Lapangan
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace Sewa_Lapangan
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginFrom());
+            Application.Run(new LoginForm());
         }
     }
 }

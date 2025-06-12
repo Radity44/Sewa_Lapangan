@@ -10,11 +10,46 @@ using System.Windows.Forms;
 
 namespace Sewa_Lapangan.Views.Admin
 {
-    public partial class AdminDashboardForm: Form
+    public partial class AdminDashboardForm : Form
     {
         public AdminDashboardForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AdminDashboardForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnDashboard_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sewa_Lapangan.Views.User
+namespace Sewa_Lapangan.Views.Admin
 {
-    public partial class UserDashboardForm : Form
+    public partial class KelolaJadwalForm : Form
     {
-        public UserDashboardForm()
+        public KelolaJadwalForm()
         {
             InitializeComponent();
         }
