@@ -43,6 +43,9 @@ namespace Sewa_Lapangan.Views
 
             if (user != null)
             {
+                SessionManager.UserId = user.IdUser;
+                SessionManager.UserName = user.Nama;
+                SessionManager.Role = user.Role;
                 MessageBox.Show("Login berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Cek role user
@@ -93,6 +96,11 @@ namespace Sewa_Lapangan.Views
             var registerForm = new RegisterForm();
             registerForm.Show();
             this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

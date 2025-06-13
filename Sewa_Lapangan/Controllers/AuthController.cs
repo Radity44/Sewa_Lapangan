@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Npgsql;
+using Sewa_Lapangan.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sewa_Lapangan.Models;
 
 namespace Sewa_Lapangan.Controllers
 {
@@ -18,14 +19,39 @@ namespace Sewa_Lapangan.Controllers
         // Fungsi Register
         public static bool Register(string nama, string email, string password)
         {
-            UserModel user = new UserModel
+            using (var conn = DatabaseHelper.GetConnection())
             {
-                Nama = nama,
-                Email = email,
-                Password = password
-            };
+                conn.Open();
 
-            return UserModel.Register(user);
+                // Cek email sudah ada?
+                string cekQuery = "SELECT COUNT(*) FROM \"user\" WHERE email = @Email";
+                using (var cmdCek = new NpgsqlCommand(cekQuery, conn))
+                {
+                    cmdCek.Parameters.AddWithValue("@Email", email);
+                    int count = Convert.ToInt32(cmdCek.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        return false; // email sudah terdaftar
+                    }
+                }
+
+                // Insert user baru
+                string insertQuery = @"
+            INSERT INTO ""user"" (nama, email, password, role)
+            VALUES (@Nama, @Email, @Password, 'pengguna')";
+
+                using (var cmdInsert = new NpgsqlCommand(insertQuery, conn))
+                {
+                    cmdInsert.Parameters.AddWithValue("@Nama", nama);
+                    cmdInsert.Parameters.AddWithValue("@Email", email);
+                    cmdInsert.Parameters.AddWithValue("@Password", password);
+                    cmdInsert.ExecuteNonQuery();
+                }
+
+                return true;
+            }
         }
+
     }
 }

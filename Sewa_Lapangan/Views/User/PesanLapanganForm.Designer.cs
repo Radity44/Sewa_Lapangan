@@ -33,8 +33,10 @@
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            dgvPesanan = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPesanan).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,6 +67,7 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click;
             // 
             // label1
             // 
@@ -75,23 +78,36 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(180, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "Pesan lapangan";
             label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dgvPesanan
+            // 
+            dgvPesanan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPesanan.Location = new Point(98, 126);
+            dgvPesanan.Name = "dgvPesanan";
+            dgvPesanan.RowHeadersWidth = 51;
+            dgvPesanan.Size = new Size(581, 265);
+            dgvPesanan.TabIndex = 2;
+            dgvPesanan.CellContentClick += dgvPesanan_CellContentClick;
             // 
             // PesanLapanganForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvPesanan);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "PesanLapanganForm";
             Text = "PesanLapanganForm";
+            Load += PesanLapanganForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPesanan).EndInit();
             ResumeLayout(false);
         }
 
@@ -101,5 +117,6 @@
         private Panel panel1;
         private Button btnback;
         private Label label1;
+        private DataGridView dgvPesanan;
     }
 }

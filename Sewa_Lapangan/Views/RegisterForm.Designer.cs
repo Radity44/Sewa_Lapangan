@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            linkToLogin = new LinkLabel();
             txtNama = new TextBox();
             label5 = new Label();
             label4 = new Label();
@@ -38,7 +39,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            linkToLogin = new LinkLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,6 +59,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(496, 348);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
+            // 
+            // linkToLogin
+            // 
+            linkToLogin.AutoSize = true;
+            linkToLogin.Location = new Point(317, 270);
+            linkToLogin.Name = "linkToLogin";
+            linkToLogin.Size = new Size(89, 20);
+            linkToLogin.TabIndex = 10;
+            linkToLogin.TabStop = true;
+            linkToLogin.Text = "Login di sini";
+            linkToLogin.LinkClicked += linkToLogin_LinkClicked;
             // 
             // txtNama
             // 
@@ -136,17 +148,6 @@
             label1.Size = new Size(117, 31);
             label1.TabIndex = 0;
             label1.Text = "REGISTER";
-            // 
-            // linkToLogin
-            // 
-            linkToLogin.AutoSize = true;
-            linkToLogin.Location = new Point(317, 270);
-            linkToLogin.Name = "linkToLogin";
-            linkToLogin.Size = new Size(89, 20);
-            linkToLogin.TabIndex = 10;
-            linkToLogin.TabStop = true;
-            linkToLogin.Text = "Login di sini";
-            linkToLogin.LinkClicked += linkToLogin_LinkClicked;
             // 
             // RegisterForm
             // 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            LinkToRegister = new LinkLabel();
             label4 = new Label();
             btnLogin = new Button();
             txtPassword = new TextBox();
@@ -36,7 +37,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            LinkToRegister = new LinkLabel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,6 +55,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(496, 353);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
+            // 
+            // LinkToRegister
+            // 
+            LinkToRegister.AutoSize = true;
+            LinkToRegister.Location = new Point(300, 291);
+            LinkToRegister.Name = "LinkToRegister";
+            LinkToRegister.Size = new Size(63, 20);
+            LinkToRegister.TabIndex = 8;
+            LinkToRegister.TabStop = true;
+            LinkToRegister.Text = "Register";
+            LinkToRegister.LinkClicked += LinkToRegister_LinkClicked;
             // 
             // label4
             // 
@@ -117,17 +129,6 @@
             label1.Size = new Size(229, 31);
             label1.TabIndex = 0;
             label1.Text = "LOGIN TO GOSPORT";
-            // 
-            // LinkToRegister
-            // 
-            LinkToRegister.AutoSize = true;
-            LinkToRegister.Location = new Point(300, 291);
-            LinkToRegister.Name = "LinkToRegister";
-            LinkToRegister.Size = new Size(63, 20);
-            LinkToRegister.TabIndex = 8;
-            LinkToRegister.TabStop = true;
-            LinkToRegister.Text = "Register";
-            LinkToRegister.LinkClicked += LinkToRegister_LinkClicked;
             // 
             // LoginForm
             // 

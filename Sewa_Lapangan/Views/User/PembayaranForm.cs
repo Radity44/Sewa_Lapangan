@@ -16,5 +16,12 @@ namespace Sewa_Lapangan.Views.User
         {
             InitializeComponent();
         }
+
+        private void btnback_Click(object sender, EventArgs e)
+        {
+            UserDashboardForm dashboard = new UserDashboardForm();
+            dashboard.Show();
+            this.Close();
+        }
     }
 }

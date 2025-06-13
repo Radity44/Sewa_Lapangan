@@ -31,17 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboardForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            GOSPORT = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
             button1 = new Button();
             btnDashboard = new Button();
             panel4 = new Panel();
             panel5 = new Panel();
-            button2 = new Button();
+            btnLihatJadwal = new Button();
             button3 = new Button();
             panel6 = new Panel();
             panel7 = new Panel();
-            button4 = new Button();
+            btnPesanLapangan = new Button();
             button5 = new Button();
             panel8 = new Panel();
             panel9 = new Panel();
@@ -55,7 +56,6 @@
             panel13 = new Panel();
             btnLogout = new Button();
             button10 = new Button();
-            GOSPORT = new Label();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -95,6 +95,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(252, 83);
             panel1.TabIndex = 1;
+            // 
+            // GOSPORT
+            // 
+            GOSPORT.AutoSize = true;
+            GOSPORT.BorderStyle = BorderStyle.Fixed3D;
+            GOSPORT.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GOSPORT.ForeColor = Color.White;
+            GOSPORT.Location = new Point(32, 17);
+            GOSPORT.Name = "GOSPORT";
+            GOSPORT.Size = new Size(147, 40);
+            GOSPORT.TabIndex = 2;
+            GOSPORT.Text = "GOSPORT";
             // 
             // panel2
             // 
@@ -158,28 +170,29 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(button2);
+            panel5.Controls.Add(btnLihatJadwal);
             panel5.Location = new Point(0, 8);
             panel5.Name = "panel5";
             panel5.Size = new Size(250, 70);
             panel5.TabIndex = 3;
             // 
-            // button2
+            // btnLihatJadwal
             // 
-            button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button2.BackColor = Color.FromArgb(35, 40, 45);
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(-5, -52);
-            button2.Name = "button2";
-            button2.Size = new Size(286, 164);
-            button2.TabIndex = 0;
-            button2.Text = "             Lihat Jadwal";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
+            btnLihatJadwal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLihatJadwal.BackColor = Color.FromArgb(35, 40, 45);
+            btnLihatJadwal.BackgroundImageLayout = ImageLayout.None;
+            btnLihatJadwal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLihatJadwal.ForeColor = Color.White;
+            btnLihatJadwal.Image = (Image)resources.GetObject("btnLihatJadwal.Image");
+            btnLihatJadwal.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLihatJadwal.Location = new Point(-6, -52);
+            btnLihatJadwal.Name = "btnLihatJadwal";
+            btnLihatJadwal.Size = new Size(286, 164);
+            btnLihatJadwal.TabIndex = 0;
+            btnLihatJadwal.Text = "             Lihat Jadwal";
+            btnLihatJadwal.TextAlign = ContentAlignment.MiddleLeft;
+            btnLihatJadwal.UseVisualStyleBackColor = false;
+            btnLihatJadwal.Click += btnLihatJadwal_Click;
             // 
             // button3
             // 
@@ -209,28 +222,29 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(button4);
+            panel7.Controls.Add(btnPesanLapangan);
             panel7.Location = new Point(0, 8);
             panel7.Name = "panel7";
             panel7.Size = new Size(250, 70);
             panel7.TabIndex = 3;
             // 
-            // button4
+            // btnPesanLapangan
             // 
-            button4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button4.BackColor = Color.FromArgb(35, 40, 45);
-            button4.BackgroundImageLayout = ImageLayout.None;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(-12, -52);
-            button4.Name = "button4";
-            button4.Size = new Size(286, 164);
-            button4.TabIndex = 0;
-            button4.Text = "              Pesan Lapangan";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = false;
+            btnPesanLapangan.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnPesanLapangan.BackColor = Color.FromArgb(35, 40, 45);
+            btnPesanLapangan.BackgroundImageLayout = ImageLayout.None;
+            btnPesanLapangan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPesanLapangan.ForeColor = Color.White;
+            btnPesanLapangan.Image = (Image)resources.GetObject("btnPesanLapangan.Image");
+            btnPesanLapangan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPesanLapangan.Location = new Point(-13, -52);
+            btnPesanLapangan.Name = "btnPesanLapangan";
+            btnPesanLapangan.Size = new Size(286, 164);
+            btnPesanLapangan.TabIndex = 0;
+            btnPesanLapangan.Text = "              Pesan Lapangan";
+            btnPesanLapangan.TextAlign = ContentAlignment.MiddleLeft;
+            btnPesanLapangan.UseVisualStyleBackColor = false;
+            btnPesanLapangan.Click += btnPesanLapangan_Click;
             // 
             // button5
             // 
@@ -275,7 +289,7 @@
             button6.ForeColor = Color.White;
             button6.Image = (Image)resources.GetObject("button6.Image");
             button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(-5, -54);
+            button6.Location = new Point(-7, -54);
             button6.Name = "button6";
             button6.Size = new Size(286, 164);
             button6.TabIndex = 0;
@@ -326,7 +340,7 @@
             btnRiwayat.ForeColor = Color.White;
             btnRiwayat.Image = (Image)resources.GetObject("btnRiwayat.Image");
             btnRiwayat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRiwayat.Location = new Point(-4, -53);
+            btnRiwayat.Location = new Point(-6, -53);
             btnRiwayat.Name = "btnRiwayat";
             btnRiwayat.Size = new Size(286, 164);
             btnRiwayat.TabIndex = 0;
@@ -377,7 +391,7 @@
             btnLogout.ForeColor = Color.White;
             btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(-4, -53);
+            btnLogout.Location = new Point(-4, -52);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(286, 164);
             btnLogout.TabIndex = 0;
@@ -401,18 +415,6 @@
             button10.Text = "             Beranda";
             button10.TextAlign = ContentAlignment.MiddleLeft;
             button10.UseVisualStyleBackColor = false;
-            // 
-            // GOSPORT
-            // 
-            GOSPORT.AutoSize = true;
-            GOSPORT.BorderStyle = BorderStyle.Fixed3D;
-            GOSPORT.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GOSPORT.ForeColor = Color.White;
-            GOSPORT.Location = new Point(32, 17);
-            GOSPORT.Name = "GOSPORT";
-            GOSPORT.Size = new Size(147, 40);
-            GOSPORT.TabIndex = 2;
-            GOSPORT.Text = "GOSPORT";
             // 
             // UserDashboardForm
             // 
@@ -451,11 +453,11 @@
         private Button btnDashboard;
         private Panel panel4;
         private Panel panel5;
-        private Button button2;
+        private Button btnLihatJadwal;
         private Button button3;
         private Panel panel6;
         private Panel panel7;
-        private Button button4;
+        private Button btnPesanLapangan;
         private Button button5;
         private Panel panel8;
         private Panel panel9;
