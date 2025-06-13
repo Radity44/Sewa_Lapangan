@@ -1,4 +1,5 @@
 using Sewa_Lapangan.Views;
+using Sewa_Lapangan.Views.Admin;
 
 namespace Sewa_Lapangan
 {
@@ -13,7 +14,7 @@ namespace Sewa_Lapangan
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            Application.Run(new UpdateJadwalForm());
         }
     }
 }

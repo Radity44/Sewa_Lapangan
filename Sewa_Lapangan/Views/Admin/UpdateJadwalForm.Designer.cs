@@ -1,6 +1,6 @@
 ﻿namespace Sewa_Lapangan.Views.Admin
 {
-    partial class RiwayatPesananForm
+    partial class UpdateJadwalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RiwayatPesananForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateJadwalForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            dgvJadwal = new DataGridView();
+            label2 = new Label();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvJadwal).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,6 +68,7 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click;
             // 
             // label1
             // 
@@ -75,24 +79,48 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(171, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "Update Jadwal";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // RiwayatPesananForm
+            // dgvJadwal
+            // 
+            dgvJadwal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvJadwal.Location = new Point(55, 136);
+            dgvJadwal.Name = "dgvJadwal";
+            dgvJadwal.RowHeadersWidth = 51;
+            dgvJadwal.Size = new Size(706, 259);
+            dgvJadwal.TabIndex = 2;
+            dgvJadwal.CellContentClick += dgvJadwal_CellContentClick;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(53, 90);
+            label2.Name = "label2";
+            label2.Size = new Size(180, 31);
+            label2.TabIndex = 3;
+            label2.Text = "Jadwal Tersedia";
+            // 
+            // UpdateJadwalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(dgvJadwal);
             Controls.Add(flowLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "RiwayatPesananForm";
-            Text = "RiwayatPesananForm";
+            Name = "UpdateJadwalForm";
+            Text = "UpdateJadwalForm";
+            Load += UpdateJadwalForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvJadwal).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -101,5 +129,7 @@
         private Panel panel1;
         private Button btnback;
         private Label label1;
+        private DataGridView dgvJadwal;
+        private Label label2;
     }
 }

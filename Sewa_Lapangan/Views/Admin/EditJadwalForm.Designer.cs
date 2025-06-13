@@ -1,6 +1,6 @@
 ﻿namespace Sewa_Lapangan.Views.Admin
 {
-    partial class KelolaJadwalForm
+    partial class EditJadwalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KelolaJadwalForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditJadwalForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
             btnback = new Button();
@@ -42,13 +42,11 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            btnSimpan = new Button();
+            btnUpdate = new Button();
             txtJamMulai = new TextBox();
             dtpTanggal = new DateTimePicker();
             cmbNamaLapangan = new ComboBox();
             cmbJenisLapangan = new ComboBox();
-            npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
-            button1 = new Button();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -64,7 +62,7 @@
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(800, 44);
-            flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
@@ -83,7 +81,6 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
-            btnback.Click += btnback_Click;
             // 
             // label1
             // 
@@ -94,9 +91,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(135, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "Edit Jadwal";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // groupBox1
@@ -109,18 +106,17 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(btnSimpan);
+            groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(txtJamMulai);
             groupBox1.Controls.Add(dtpTanggal);
             groupBox1.Controls.Add(cmbNamaLapangan);
             groupBox1.Controls.Add(cmbJenisLapangan);
-            groupBox1.Location = new Point(76, 50);
+            groupBox1.Location = new Point(71, 61);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(678, 357);
-            groupBox1.TabIndex = 1;
+            groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // label7
             // 
@@ -130,7 +126,6 @@
             label7.Size = new Size(62, 20);
             label7.TabIndex = 14;
             label7.Text = "Set Tarif";
-            label7.Click += label7_Click;
             // 
             // txtTarif
             // 
@@ -138,7 +133,6 @@
             txtTarif.Name = "txtTarif";
             txtTarif.Size = new Size(335, 27);
             txtTarif.TabIndex = 13;
-            txtTarif.TextChanged += txtTarif_TextChanged;
             // 
             // numDurasi
             // 
@@ -146,7 +140,6 @@
             numDurasi.Name = "numDurasi";
             numDurasi.Size = new Size(332, 27);
             numDurasi.TabIndex = 12;
-            numDurasi.ValueChanged += numDurasi_ValueChanged;
             // 
             // label6
             // 
@@ -193,15 +186,14 @@
             label2.TabIndex = 7;
             label2.Text = "Pilih Jenis Lapamgan";
             // 
-            // btnSimpan
+            // btnUpdate
             // 
-            btnSimpan.Location = new Point(563, 322);
-            btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(94, 29);
-            btnSimpan.TabIndex = 6;
-            btnSimpan.Text = "Simpan";
-            btnSimpan.UseVisualStyleBackColor = true;
-            btnSimpan.Click += btnSimpan_Click;
+            btnUpdate.Location = new Point(563, 322);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(94, 29);
+            btnUpdate.TabIndex = 6;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
             // 
             // txtJamMulai
             // 
@@ -209,7 +201,6 @@
             txtJamMulai.Name = "txtJamMulai";
             txtJamMulai.Size = new Size(335, 27);
             txtJamMulai.TabIndex = 5;
-            txtJamMulai.TextChanged += txtJamMulai_TextChanged;
             // 
             // dtpTanggal
             // 
@@ -217,7 +208,6 @@
             dtpTanggal.Name = "dtpTanggal";
             dtpTanggal.Size = new Size(332, 27);
             dtpTanggal.TabIndex = 2;
-            dtpTanggal.ValueChanged += dtpTanggal_ValueChanged;
             // 
             // cmbNamaLapangan
             // 
@@ -226,7 +216,6 @@
             cmbNamaLapangan.Name = "cmbNamaLapangan";
             cmbNamaLapangan.Size = new Size(332, 28);
             cmbNamaLapangan.TabIndex = 1;
-            cmbNamaLapangan.SelectedIndexChanged += cmbNamaLapangan_SelectedIndexChanged;
             // 
             // cmbJenisLapangan
             // 
@@ -235,35 +224,17 @@
             cmbJenisLapangan.Name = "cmbJenisLapangan";
             cmbJenisLapangan.Size = new Size(332, 28);
             cmbJenisLapangan.TabIndex = 0;
-            cmbJenisLapangan.SelectedIndexChanged += cmbJenisLapangan_SelectedIndexChanged;
             // 
-            // npgsqlDataAdapter1
-            // 
-            npgsqlDataAdapter1.DeleteCommand = null;
-            npgsqlDataAdapter1.InsertCommand = null;
-            npgsqlDataAdapter1.SelectCommand = null;
-            npgsqlDataAdapter1.UpdateCommand = null;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(320, 413);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 29);
-            button1.TabIndex = 15;
-            button1.Text = "Update Jadwal";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // KelolaJadwalForm
+            // EditJadwalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
             Controls.Add(groupBox1);
             Controls.Add(flowLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "KelolaJadwalForm";
-            Text = "KelolaJadwalForm";
+            Name = "EditJadwalForm";
+            Text = "EditJadwalForm";
+            Load += EditJadwalForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
@@ -280,20 +251,18 @@
         private Button btnback;
         private Label label1;
         private GroupBox groupBox1;
-        private DateTimePicker dtpTanggal;
-        private ComboBox cmbNamaLapangan;
-        private ComboBox cmbJenisLapangan;
-        private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
-        private Button btnSimpan;
-        private TextBox txtJamMulai;
-        private Label label2;
+        private Label label7;
+        private TextBox txtTarif;
+        private NumericUpDown numDurasi;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
-        private NumericUpDown numDurasi;
-        private Label label7;
-        private TextBox txtTarif;
-        private Button button1;
+        private Label label2;
+        private Button btnUpdate;
+        private TextBox txtJamMulai;
+        private DateTimePicker dtpTanggal;
+        private ComboBox cmbNamaLapangan;
+        private ComboBox cmbJenisLapangan;
     }
 }

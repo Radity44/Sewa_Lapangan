@@ -31,13 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboardForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            GOSPORT = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
             button1 = new Button();
             btnDashboard = new Button();
             panel4 = new Panel();
             panel5 = new Panel();
-            button2 = new Button();
+            btnKelolaJadwal = new Button();
             button3 = new Button();
             panel6 = new Panel();
             panel7 = new Panel();
@@ -52,7 +53,6 @@
             btnLogout = new Button();
             button9 = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            GOSPORT = new Label();
             label1 = new Label();
             dgvDataUser = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
@@ -93,6 +93,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(252, 83);
             panel1.TabIndex = 1;
+            // 
+            // GOSPORT
+            // 
+            GOSPORT.AutoSize = true;
+            GOSPORT.BorderStyle = BorderStyle.Fixed3D;
+            GOSPORT.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GOSPORT.ForeColor = Color.White;
+            GOSPORT.Location = new Point(34, 16);
+            GOSPORT.Name = "GOSPORT";
+            GOSPORT.Size = new Size(147, 40);
+            GOSPORT.TabIndex = 3;
+            GOSPORT.Text = "GOSPORT";
             // 
             // panel2
             // 
@@ -157,28 +169,29 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(button2);
+            panel5.Controls.Add(btnKelolaJadwal);
             panel5.Location = new Point(0, 8);
             panel5.Name = "panel5";
             panel5.Size = new Size(250, 70);
             panel5.TabIndex = 3;
             // 
-            // button2
+            // btnKelolaJadwal
             // 
-            button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button2.BackColor = Color.FromArgb(35, 40, 45);
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.White;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(-5, -52);
-            button2.Name = "button2";
-            button2.Size = new Size(286, 164);
-            button2.TabIndex = 0;
-            button2.Text = "             Kelola Jadwal";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
+            btnKelolaJadwal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnKelolaJadwal.BackColor = Color.FromArgb(35, 40, 45);
+            btnKelolaJadwal.BackgroundImageLayout = ImageLayout.None;
+            btnKelolaJadwal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKelolaJadwal.ForeColor = Color.White;
+            btnKelolaJadwal.Image = (Image)resources.GetObject("btnKelolaJadwal.Image");
+            btnKelolaJadwal.ImageAlign = ContentAlignment.MiddleLeft;
+            btnKelolaJadwal.Location = new Point(-5, -52);
+            btnKelolaJadwal.Name = "btnKelolaJadwal";
+            btnKelolaJadwal.Size = new Size(286, 164);
+            btnKelolaJadwal.TabIndex = 0;
+            btnKelolaJadwal.Text = "             Kelola Jadwal";
+            btnKelolaJadwal.TextAlign = ContentAlignment.MiddleLeft;
+            btnKelolaJadwal.UseVisualStyleBackColor = false;
+            btnKelolaJadwal.Click += btnKelolaJadwal_Click;
             // 
             // button3
             // 
@@ -352,18 +365,6 @@
             button9.TextAlign = ContentAlignment.MiddleLeft;
             button9.UseVisualStyleBackColor = false;
             // 
-            // GOSPORT
-            // 
-            GOSPORT.AutoSize = true;
-            GOSPORT.BorderStyle = BorderStyle.Fixed3D;
-            GOSPORT.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            GOSPORT.ForeColor = Color.White;
-            GOSPORT.Location = new Point(34, 16);
-            GOSPORT.Name = "GOSPORT";
-            GOSPORT.Size = new Size(147, 40);
-            GOSPORT.TabIndex = 3;
-            GOSPORT.Text = "GOSPORT";
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -378,11 +379,12 @@
             // 
             // dgvDataUser
             // 
+            dgvDataUser.AllowUserToAddRows = false;
             dgvDataUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDataUser.Location = new Point(273, 210);
+            dgvDataUser.Location = new Point(277, 319);
             dgvDataUser.Name = "dgvDataUser";
             dgvDataUser.RowHeadersWidth = 51;
-            dgvDataUser.Size = new Size(694, 244);
+            dgvDataUser.Size = new Size(694, 319);
             dgvDataUser.TabIndex = 5;
             // 
             // AdminDashboardForm
@@ -426,7 +428,7 @@
         private Button button1;
         private Panel panel4;
         private Panel panel5;
-        private Button button2;
+        private Button btnKelolaJadwal;
         private Button button3;
         private Panel panel6;
         private Panel panel7;
