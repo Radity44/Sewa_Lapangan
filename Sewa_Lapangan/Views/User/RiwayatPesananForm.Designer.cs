@@ -33,8 +33,10 @@
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            dgvRiwayatUser = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayatUser).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,6 +67,7 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click;
             // 
             // label1
             // 
@@ -75,16 +78,26 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(225, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "Riwayat Pemesanan";
             label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dgvRiwayatUser
+            // 
+            dgvRiwayatUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRiwayatUser.Location = new Point(81, 124);
+            dgvRiwayatUser.Name = "dgvRiwayatUser";
+            dgvRiwayatUser.RowHeadersWidth = 51;
+            dgvRiwayatUser.Size = new Size(642, 237);
+            dgvRiwayatUser.TabIndex = 2;
             // 
             // RiwayatPesananForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvRiwayatUser);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "RiwayatPesananForm";
@@ -92,6 +105,7 @@
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayatUser).EndInit();
             ResumeLayout(false);
         }
 
@@ -101,5 +115,6 @@
         private Panel panel1;
         private Button btnback;
         private Label label1;
+        private DataGridView dgvRiwayatUser;
     }
 }

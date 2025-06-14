@@ -33,8 +33,10 @@
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            dgvPembayaran = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPembayaran).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,6 +67,7 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click;
             // 
             // label1
             // 
@@ -75,22 +78,34 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(218, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "Kelola Pembayaran";
             label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dgvPembayaran
+            // 
+            dgvPembayaran.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPembayaran.Location = new Point(83, 131);
+            dgvPembayaran.Name = "dgvPembayaran";
+            dgvPembayaran.RowHeadersWidth = 51;
+            dgvPembayaran.Size = new Size(666, 236);
+            dgvPembayaran.TabIndex = 2;
+            dgvPembayaran.CellContentClick += dgvPembayaran_CellContentClick;
             // 
             // KelolaPembayaranForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvPembayaran);
             Controls.Add(flowLayoutPanel1);
             Name = "KelolaPembayaranForm";
             Text = "KelolaPembayaranForm";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPembayaran).EndInit();
             ResumeLayout(false);
         }
 
@@ -100,5 +115,6 @@
         private Panel panel1;
         private Button btnback;
         private Label label1;
+        private DataGridView dgvPembayaran;
     }
 }

@@ -81,6 +81,7 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click_1;
             // 
             // label1
             // 

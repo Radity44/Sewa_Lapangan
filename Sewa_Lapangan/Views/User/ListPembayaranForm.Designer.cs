@@ -1,6 +1,6 @@
 ﻿namespace Sewa_Lapangan.Views.User
 {
-    partial class PembayaranForm
+    partial class ListPembayaranForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PembayaranForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListPembayaranForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            dgvPesanan = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPesanan).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -46,7 +48,7 @@
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(800, 44);
-            flowLayoutPanel1.TabIndex = 1;
+            flowLayoutPanel1.TabIndex = 3;
             // 
             // panel1
             // 
@@ -81,18 +83,29 @@
             label1.Text = "Kelola Jadwal";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // PembayaranForm
+            // dgvPesanan
+            // 
+            dgvPesanan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPesanan.Location = new Point(55, 152);
+            dgvPesanan.Name = "dgvPesanan";
+            dgvPesanan.RowHeadersWidth = 51;
+            dgvPesanan.Size = new Size(693, 270);
+            dgvPesanan.TabIndex = 4;
+            dgvPesanan.CellContentClick += dgvPesanan_CellContentClick;
+            // 
+            // ListPembayaranForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvPesanan);
             Controls.Add(flowLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "PembayaranForm";
-            Text = "PembayaranForm";
+            Name = "ListPembayaranForm";
+            Text = "ListPembayaranForm";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPesanan).EndInit();
             ResumeLayout(false);
         }
 
@@ -102,5 +115,6 @@
         private Panel panel1;
         private Button btnback;
         private Label label1;
+        private DataGridView dgvPesanan;
     }
 }

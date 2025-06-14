@@ -203,5 +203,12 @@ namespace Sewa_Lapangan.Views.Admin
         {
             this.Close();
         }
+
+        private void btnback_Click_1(object sender, EventArgs e)
+        {
+            KelolaJadwalForm KelolaJadwal = new KelolaJadwalForm();
+            KelolaJadwal.Show();
+            this.Close();
+        }
     }
 }

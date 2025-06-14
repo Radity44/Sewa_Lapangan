@@ -33,8 +33,10 @@
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            dgvRiwayat = new DataGridView();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -65,6 +67,7 @@
             btnback.Size = new Size(57, 68);
             btnback.TabIndex = 1;
             btnback.UseVisualStyleBackColor = true;
+            btnback.Click += btnback_Click;
             // 
             // label1
             // 
@@ -80,18 +83,31 @@
             label1.Text = "Kelola Jadwal";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // dgvRiwayat
+            // 
+            dgvRiwayat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRiwayat.Location = new Point(112, 143);
+            dgvRiwayat.Name = "dgvRiwayat";
+            dgvRiwayat.RowHeadersWidth = 51;
+            dgvRiwayat.Size = new Size(606, 242);
+            dgvRiwayat.TabIndex = 2;
+            dgvRiwayat.CellContentClick += dgvRiwayat_CellContentClick;
+            // 
             // RiwayatPesananForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dgvRiwayat);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "RiwayatPesananForm";
             Text = "RiwayatPesananForm";
+            Load += RiwayatPesananForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayat).EndInit();
             ResumeLayout(false);
         }
 
@@ -101,5 +117,6 @@
         private Panel panel1;
         private Button btnback;
         private Label label1;
+        private DataGridView dgvRiwayat;
     }
 }

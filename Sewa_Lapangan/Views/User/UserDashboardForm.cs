@@ -30,5 +30,10 @@ namespace Sewa_Lapangan.Views.User
             pesanForm.Show();
             this.Close();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
