@@ -44,10 +44,10 @@
             panel7 = new Panel();
             btnPesanLapangan = new Button();
             button5 = new Button();
-            panel8 = new Panel();
-            panel9 = new Panel();
-            button6 = new Button();
-            button7 = new Button();
+            panel14 = new Panel();
+            panel15 = new Panel();
+            btnPembayaran = new Button();
+            button4 = new Button();
             panel10 = new Panel();
             panel11 = new Panel();
             btnRiwayat = new Button();
@@ -64,8 +64,8 @@
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
-            panel8.SuspendLayout();
-            panel9.SuspendLayout();
+            panel14.SuspendLayout();
+            panel15.SuspendLayout();
             panel10.SuspendLayout();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
@@ -79,7 +79,7 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Controls.Add(panel6);
-            flowLayoutPanel1.Controls.Add(panel8);
+            flowLayoutPanel1.Controls.Add(panel14);
             flowLayoutPanel1.Controls.Add(panel10);
             flowLayoutPanel1.Controls.Add(panel12);
             flowLayoutPanel1.Dock = DockStyle.Left;
@@ -263,56 +263,57 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             // 
-            // panel8
+            // panel14
             // 
-            panel8.Controls.Add(panel9);
-            panel8.Controls.Add(button7);
-            panel8.Location = new Point(3, 296);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(242, 62);
-            panel8.TabIndex = 4;
+            panel14.Controls.Add(panel15);
+            panel14.Controls.Add(button4);
+            panel14.Location = new Point(3, 296);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(242, 62);
+            panel14.TabIndex = 5;
             // 
-            // panel9
+            // panel15
             // 
-            panel9.Controls.Add(button6);
-            panel9.Location = new Point(0, 8);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(250, 70);
-            panel9.TabIndex = 3;
+            panel15.Controls.Add(btnPembayaran);
+            panel15.Location = new Point(0, 8);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(250, 70);
+            panel15.TabIndex = 3;
             // 
-            // button6
+            // btnPembayaran
             // 
-            button6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button6.BackColor = Color.FromArgb(35, 40, 45);
-            button6.BackgroundImageLayout = ImageLayout.None;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.ForeColor = Color.White;
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(-7, -54);
-            button6.Name = "button6";
-            button6.Size = new Size(286, 164);
-            button6.TabIndex = 0;
-            button6.Text = "             Pembayaran";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
+            btnPembayaran.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnPembayaran.BackColor = Color.FromArgb(35, 40, 45);
+            btnPembayaran.BackgroundImageLayout = ImageLayout.None;
+            btnPembayaran.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPembayaran.ForeColor = Color.White;
+            btnPembayaran.Image = (Image)resources.GetObject("btnPembayaran.Image");
+            btnPembayaran.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPembayaran.Location = new Point(-7, -54);
+            btnPembayaran.Name = "btnPembayaran";
+            btnPembayaran.Size = new Size(286, 164);
+            btnPembayaran.TabIndex = 0;
+            btnPembayaran.Text = "             Pembayaran";
+            btnPembayaran.TextAlign = ContentAlignment.MiddleLeft;
+            btnPembayaran.UseVisualStyleBackColor = false;
+            btnPembayaran.Click += btnPembayaran_Click;
             // 
-            // button7
+            // button4
             // 
-            button7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button7.BackColor = Color.FromArgb(35, 40, 45);
-            button7.BackgroundImageLayout = ImageLayout.None;
-            button7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.White;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(-5, -52);
-            button7.Name = "button7";
-            button7.Size = new Size(286, 164);
-            button7.TabIndex = 0;
-            button7.Text = "             Beranda";
-            button7.TextAlign = ContentAlignment.MiddleLeft;
-            button7.UseVisualStyleBackColor = false;
+            button4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button4.BackColor = Color.FromArgb(35, 40, 45);
+            button4.BackgroundImageLayout = ImageLayout.None;
+            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button4.ForeColor = Color.White;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
+            button4.Location = new Point(-5, -52);
+            button4.Name = "button4";
+            button4.Size = new Size(286, 164);
+            button4.TabIndex = 0;
+            button4.Text = "             Beranda";
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = false;
             // 
             // panel10
             // 
@@ -347,6 +348,7 @@
             btnRiwayat.Text = "             Riwayat";
             btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
             btnRiwayat.UseVisualStyleBackColor = false;
+            btnRiwayat.Click += btnRiwayat_Click_1;
             // 
             // button9
             // 
@@ -435,8 +437,8 @@
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            panel9.ResumeLayout(false);
+            panel14.ResumeLayout(false);
+            panel15.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
@@ -460,10 +462,6 @@
         private Panel panel7;
         private Button btnPesanLapangan;
         private Button button5;
-        private Panel panel8;
-        private Panel panel9;
-        private Button button6;
-        private Button button7;
         private Panel panel10;
         private Panel panel11;
         private Button btnRiwayat;
@@ -473,5 +471,9 @@
         private Button btnLogout;
         private Button button10;
         private Label GOSPORT;
+        private Panel panel14;
+        private Panel panel15;
+        private Button btnPembayaran;
+        private Button button4;
     }
 }

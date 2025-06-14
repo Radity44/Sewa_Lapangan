@@ -43,5 +43,29 @@ namespace Sewa_Lapangan.Views.User
             loginForm.Show();
             this.Close();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRiwayat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPembayaran_Click(object sender, EventArgs e)
+        {
+            ListPembayaranForm pembayaranForm = new ListPembayaranForm();
+            pembayaranForm.Show();
+            this.Close();
+        }
+
+        private void btnRiwayat_Click_1(object sender, EventArgs e)
+        {
+            RiwayatPesananForm riwayatPesananForm = new RiwayatPesananForm();
+            riwayatPesananForm.Show();
+            this.Close();
+        }
     }
 }

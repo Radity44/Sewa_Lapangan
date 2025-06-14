@@ -99,5 +99,10 @@ namespace Sewa_Lapangan.Views.User
                 this.Close();
             }
         }
+
+        private void ListPembayaranForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

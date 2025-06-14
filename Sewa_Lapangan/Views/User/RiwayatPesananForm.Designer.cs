@@ -102,6 +102,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "RiwayatPesananForm";
             Text = "RiwayatPesananForm";
+            Load += RiwayatPesananForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);

@@ -109,7 +109,9 @@ namespace Sewa_Lapangan.Views.Admin
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            RiwayatPesananForm riwayatPesanan = new RiwayatPesananForm();
+            riwayatPesanan.Show();
+            this.Hide();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -127,6 +129,13 @@ namespace Sewa_Lapangan.Views.Admin
         {
             KelolaJadwalForm kelolaJadwal = new KelolaJadwalForm();
             kelolaJadwal.Show();
+            this.Hide();
+        }
+
+        private void btnKelolaTransaksi_Click(object sender, EventArgs e)
+        {
+            KelolaPembayaranForm kelolaPembayaran = new KelolaPembayaranForm();
+            kelolaPembayaran.Show();
             this.Hide();
         }
     }

@@ -84,5 +84,10 @@ namespace Sewa_Lapangan.Views.User
             dash.Show();
             this.Close();
         }
+
+        private void RiwayatPesananForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

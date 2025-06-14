@@ -50,7 +50,6 @@ namespace Sewa_Lapangan.Views.User
                             lblTanggal.Text = Convert.ToDateTime(reader["tanggal"]).ToString("yyyy-MM-dd");
                             lblJam.Text = $"{reader["jam_mulai"]} - {reader["jam_selesai"]}";
                             lblTarif.Text = reader["tarif"].ToString();
-
                             lblNamaPemesan.Text = reader["nama_pemesan"].ToString();
                             lblNoHPPemesan.Text = reader["nohp_pemesan"].ToString();
                         }
@@ -100,7 +99,7 @@ namespace Sewa_Lapangan.Views.User
         private void btnBayar_Click(object sender, EventArgs e)
         {
             string metode = cmbMetodePembayaran.SelectedItem.ToString();
-            int idMetode = (metode == "Cash") ? 1 : 2;
+            int idMetode = (metode == "Cash") ? 1 : 2;  // Asumsi id_metode (1 = Cash, 2 = Transfer)
 
             try
             {
@@ -108,6 +107,7 @@ namespace Sewa_Lapangan.Views.User
                 {
                     conn.Open();
 
+                    // Insert ke tabel pembayaran
                     string query = @"
                         INSERT INTO pembayaran (id_pemesanan, id_metode, waktu_pembayaran, status_pembayaran)
                         VALUES (@id_pemesanan, @id_metode, NOW(), 'Menunggu')";
@@ -119,7 +119,10 @@ namespace Sewa_Lapangan.Views.User
                         cmd.ExecuteNonQuery();
                     }
 
-                    string updatePemesanan = @"UPDATE pemesanan SET status_bayar = 'Menunggu' WHERE id_pemesanan = @id_pemesanan";
+                    // Update status_bayar di tabel pemesanan
+                    string updatePemesanan = @"
+                        UPDATE pemesanan SET status_bayar = 'Menunggu' WHERE id_pemesanan = @id_pemesanan";
+
                     using (var cmdUpdate = new NpgsqlCommand(updatePemesanan, conn))
                     {
                         cmdUpdate.Parameters.AddWithValue("@id_pemesanan", idPemesanan);
@@ -127,7 +130,7 @@ namespace Sewa_Lapangan.Views.User
                     }
                 }
 
-                MessageBox.Show("Pembayaran berhasil disimpan, menunggu verifikasi admin!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Pembayaran berhasil, menunggu verifikasi admin!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UserDashboardForm dashboard = new UserDashboardForm();
                 dashboard.Show();
                 this.Close();

@@ -42,11 +42,11 @@
             button3 = new Button();
             panel6 = new Panel();
             panel7 = new Panel();
-            button4 = new Button();
+            btnKelolaTransaksi = new Button();
             button5 = new Button();
             panel8 = new Panel();
             panel9 = new Panel();
-            button6 = new Button();
+            btnLihatRiwayat = new Button();
             button7 = new Button();
             panel10 = new Panel();
             panel11 = new Panel();
@@ -221,28 +221,29 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(button4);
+            panel7.Controls.Add(btnKelolaTransaksi);
             panel7.Location = new Point(0, 8);
             panel7.Name = "panel7";
             panel7.Size = new Size(250, 70);
             panel7.TabIndex = 3;
             // 
-            // button4
+            // btnKelolaTransaksi
             // 
-            button4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button4.BackColor = Color.FromArgb(35, 40, 45);
-            button4.BackgroundImageLayout = ImageLayout.None;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.ForeColor = Color.White;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(-5, -52);
-            button4.Name = "button4";
-            button4.Size = new Size(286, 164);
-            button4.TabIndex = 0;
-            button4.Text = "             Kelola Transaksi";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = false;
+            btnKelolaTransaksi.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnKelolaTransaksi.BackColor = Color.FromArgb(35, 40, 45);
+            btnKelolaTransaksi.BackgroundImageLayout = ImageLayout.None;
+            btnKelolaTransaksi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKelolaTransaksi.ForeColor = Color.White;
+            btnKelolaTransaksi.Image = (Image)resources.GetObject("btnKelolaTransaksi.Image");
+            btnKelolaTransaksi.ImageAlign = ContentAlignment.MiddleLeft;
+            btnKelolaTransaksi.Location = new Point(-5, -52);
+            btnKelolaTransaksi.Name = "btnKelolaTransaksi";
+            btnKelolaTransaksi.Size = new Size(286, 164);
+            btnKelolaTransaksi.TabIndex = 0;
+            btnKelolaTransaksi.Text = "             Kelola Transaksi";
+            btnKelolaTransaksi.TextAlign = ContentAlignment.MiddleLeft;
+            btnKelolaTransaksi.UseVisualStyleBackColor = false;
+            btnKelolaTransaksi.Click += btnKelolaTransaksi_Click;
             // 
             // button5
             // 
@@ -272,29 +273,29 @@
             // 
             // panel9
             // 
-            panel9.Controls.Add(button6);
+            panel9.Controls.Add(btnLihatRiwayat);
             panel9.Location = new Point(0, 8);
             panel9.Name = "panel9";
             panel9.Size = new Size(250, 70);
             panel9.TabIndex = 3;
             // 
-            // button6
+            // btnLihatRiwayat
             // 
-            button6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button6.BackColor = Color.FromArgb(35, 40, 45);
-            button6.BackgroundImageLayout = ImageLayout.None;
-            button6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.ForeColor = Color.White;
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(-5, -54);
-            button6.Name = "button6";
-            button6.Size = new Size(286, 164);
-            button6.TabIndex = 0;
-            button6.Text = "             Lihat Riwayat";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
+            btnLihatRiwayat.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLihatRiwayat.BackColor = Color.FromArgb(35, 40, 45);
+            btnLihatRiwayat.BackgroundImageLayout = ImageLayout.None;
+            btnLihatRiwayat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLihatRiwayat.ForeColor = Color.White;
+            btnLihatRiwayat.Image = (Image)resources.GetObject("btnLihatRiwayat.Image");
+            btnLihatRiwayat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLihatRiwayat.Location = new Point(-5, -54);
+            btnLihatRiwayat.Name = "btnLihatRiwayat";
+            btnLihatRiwayat.Size = new Size(286, 164);
+            btnLihatRiwayat.TabIndex = 0;
+            btnLihatRiwayat.Text = "             Lihat Riwayat";
+            btnLihatRiwayat.TextAlign = ContentAlignment.MiddleLeft;
+            btnLihatRiwayat.UseVisualStyleBackColor = false;
+            btnLihatRiwayat.Click += button6_Click;
             // 
             // button7
             // 
@@ -432,11 +433,11 @@
         private Button button3;
         private Panel panel6;
         private Panel panel7;
-        private Button button4;
+        private Button btnKelolaTransaksi;
         private Button button5;
         private Panel panel8;
         private Panel panel9;
-        private Button button6;
+        private Button btnLihatRiwayat;
         private Button button7;
         private Panel panel10;
         private Panel panel11;

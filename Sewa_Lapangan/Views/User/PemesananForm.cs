@@ -72,81 +72,79 @@ namespace Sewa_Lapangan.Views.User
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             string namaPemesan = txtNamaPemesan.Text.Trim();
-    string noHP = txtNoHP.Text.Trim();
+            string noHP = txtNoHP.Text.Trim();
 
-    if (string.IsNullOrEmpty(namaPemesan) || string.IsNullOrEmpty(noHP))
-    {
-        MessageBox.Show("Nama dan Nomor HP wajib diisi.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        return;
-    }
-
-    try
-    {
-        using (var conn = DatabaseHelper.GetConnection())
-        {
-            conn.Open();
-
-            // ✅ Ambil id_lapangan dari jadwal_lapangan
-            int idLapangan = 0;
-            using (var cmdLapangan = new NpgsqlCommand("SELECT id_lapangan FROM jadwal_lapangan WHERE id_jadwal = @id_jadwal", conn))
+            if (string.IsNullOrEmpty(namaPemesan) || string.IsNullOrEmpty(noHP))
             {
-                cmdLapangan.Parameters.AddWithValue("@id_jadwal", idJadwal);
-                idLapangan = Convert.ToInt32(cmdLapangan.ExecuteScalar());
+                MessageBox.Show("Nama dan Nomor HP wajib diisi.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-                    // ✅ Insert ke tabel pemesanan (sudah lengkap)
-                    string insertPemesanan = @"
-                     INSERT INTO pemesanan (id_user, id_jadwal, id_lapangan, status_bayar, status_pemesanan)
-                     VALUES (@id_user, @id_jadwal, @id_lapangan, 'Belum Bayar', 'Aktif')
-                     RETURNING id_pemesanan";
+            try
+            {
+                using (var conn = DatabaseHelper.GetConnection())
+                {
+                    conn.Open();
 
+                    // 1️⃣ Ambil tarif dari jadwal lapangan
+                    int totalBiaya = 0;
+                    string queryTarif = "SELECT tarif FROM jadwal_lapangan WHERE id_jadwal = @id_jadwal";
+                    using (var cmdTarif = new NpgsqlCommand(queryTarif, conn))
+                    {
+                        cmdTarif.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                        totalBiaya = Convert.ToInt32(cmdTarif.ExecuteScalar());
+                    }
+
+                    // 2️⃣ Insert ke pemesanan
+                    string insertPemesanan = @"
+                INSERT INTO pemesanan (id_user, id_jadwal, id_lapangan, total_biaya, status_bayar, status_pemesanan)
+                VALUES (@id_user, @id_jadwal, 
+                    (SELECT id_lapangan FROM jadwal_lapangan WHERE id_jadwal = @id_jadwal), 
+                    @total_biaya, 'Belum Bayar', 'Aktif')
+                RETURNING id_pemesanan";
 
                     int idPemesanan;
-            using (var cmd = new NpgsqlCommand(insertPemesanan, conn))
-            {
-                cmd.Parameters.AddWithValue("@id_user", idUser);
-                cmd.Parameters.AddWithValue("@id_jadwal", idJadwal);
-                cmd.Parameters.AddWithValue("@id_lapangan", idLapangan);
-                idPemesanan = Convert.ToInt32(cmd.ExecuteScalar());
-            }
+                    using (var cmd = new NpgsqlCommand(insertPemesanan, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id_user", idUser);
+                        cmd.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                        cmd.Parameters.AddWithValue("@total_biaya", totalBiaya);
+                        idPemesanan = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
 
-            // ✅ Insert ke detail_pemesanan
-            string insertDetail = @"
+                    // 3️⃣ Insert ke detail pemesanan
+                    string insertDetail = @"
                 INSERT INTO detail_pemesanan (id_pemesanan, nama_pemesan, nohp_pemesan)
                 VALUES (@id_pemesanan, @nama, @nohp)";
 
-            using (var cmd2 = new NpgsqlCommand(insertDetail, conn))
-            {
-                cmd2.Parameters.AddWithValue("@id_pemesanan", idPemesanan);
-                cmd2.Parameters.AddWithValue("@nama", namaPemesan);
-                cmd2.Parameters.AddWithValue("@nohp", noHP);
-                cmd2.ExecuteNonQuery();
-            }
+                    using (var cmd2 = new NpgsqlCommand(insertDetail, conn))
+                    {
+                        cmd2.Parameters.AddWithValue("@id_pemesanan", idPemesanan);
+                        cmd2.Parameters.AddWithValue("@nama", namaPemesan);
+                        cmd2.Parameters.AddWithValue("@nohp", noHP);
+                        cmd2.ExecuteNonQuery();
+                    }
 
-            // ✅ Hapus data dari cart (opsional, tetap pakai)
-            string deleteCart = @"
+                    // 4️⃣ Hapus dari cart
+                    string deleteCart = @"
                 DELETE FROM cart_pemesanan
                 WHERE id_user = @id_user AND id_jadwal = @id_jadwal";
 
-            using (var cmdDel = new NpgsqlCommand(deleteCart, conn))
-            {
-                cmdDel.Parameters.AddWithValue("@id_user", idUser);
-                cmdDel.Parameters.AddWithValue("@id_jadwal", idJadwal);
-                cmdDel.ExecuteNonQuery();
+                    using (var cmdDel = new NpgsqlCommand(deleteCart, conn))
+                    {
+                        cmdDel.Parameters.AddWithValue("@id_user", idUser);
+                        cmdDel.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                        cmdDel.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Pemesanan berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
-        }
-
-        MessageBox.Show("Pemesanan berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        // Kembali ke Dashboard
-        UserDashboardForm dashboard = new UserDashboardForm();
-        dashboard.Show();
-        this.Close();
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Terjadi kesalahan: " + ex.Message);
-    }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+            }
         }
 
         private void btnback_Click(object sender, EventArgs e)

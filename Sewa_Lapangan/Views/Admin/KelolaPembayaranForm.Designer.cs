@@ -48,7 +48,8 @@
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(800, 44);
-            flowLayoutPanel1.TabIndex = 1;
+            flowLayoutPanel1.TabIndex = 2;
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // panel1
             // 
@@ -78,19 +79,19 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(218, 43);
+            label1.Size = new Size(160, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Pembayaran";
+            label1.Text = "Kelola Jadwal";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dgvPembayaran
             // 
             dgvPembayaran.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPembayaran.Location = new Point(83, 131);
+            dgvPembayaran.Location = new Point(102, 135);
             dgvPembayaran.Name = "dgvPembayaran";
             dgvPembayaran.RowHeadersWidth = 51;
-            dgvPembayaran.Size = new Size(666, 236);
-            dgvPembayaran.TabIndex = 2;
+            dgvPembayaran.Size = new Size(627, 303);
+            dgvPembayaran.TabIndex = 3;
             dgvPembayaran.CellContentClick += dgvPembayaran_CellContentClick;
             // 
             // KelolaPembayaranForm
@@ -102,6 +103,7 @@
             Controls.Add(flowLayoutPanel1);
             Name = "KelolaPembayaranForm";
             Text = "KelolaPembayaranForm";
+            Load += KelolaPembayaranForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);

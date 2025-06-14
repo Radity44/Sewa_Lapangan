@@ -78,9 +78,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(189, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "List Pembayaran";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dgvPesanan
@@ -102,6 +102,7 @@
             Controls.Add(flowLayoutPanel1);
             Name = "ListPembayaranForm";
             Text = "ListPembayaranForm";
+            Load += ListPembayaranForm_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);
