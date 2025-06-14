@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sewa_Lapangan.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +34,14 @@ namespace Sewa_Lapangan.Views.User
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Optional clear session (jika pakai SessionManager)
+            SessionManager.UserId = 0;
+            SessionManager.UserName = "";
 
+            // Kembali ke form login
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
         }
     }
 }

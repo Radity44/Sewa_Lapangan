@@ -72,71 +72,81 @@ namespace Sewa_Lapangan.Views.User
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             string namaPemesan = txtNamaPemesan.Text.Trim();
-            string noHP = txtNoHP.Text.Trim();
+    string noHP = txtNoHP.Text.Trim();
 
-            if (string.IsNullOrEmpty(namaPemesan) || string.IsNullOrEmpty(noHP))
+    if (string.IsNullOrEmpty(namaPemesan) || string.IsNullOrEmpty(noHP))
+    {
+        MessageBox.Show("Nama dan Nomor HP wajib diisi.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+    try
+    {
+        using (var conn = DatabaseHelper.GetConnection())
+        {
+            conn.Open();
+
+            // ✅ Ambil id_lapangan dari jadwal_lapangan
+            int idLapangan = 0;
+            using (var cmdLapangan = new NpgsqlCommand("SELECT id_lapangan FROM jadwal_lapangan WHERE id_jadwal = @id_jadwal", conn))
             {
-                MessageBox.Show("Nama dan Nomor HP wajib diisi.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                cmdLapangan.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                idLapangan = Convert.ToInt32(cmdLapangan.ExecuteScalar());
             }
 
-            try
-            {
-                using (var conn = DatabaseHelper.GetConnection())
-                {
-                    conn.Open();
-
-                    // Insert ke tabel pemesanan
+                    // ✅ Insert ke tabel pemesanan (sudah lengkap)
                     string insertPemesanan = @"
-                INSERT INTO pemesanan (id_user, id_jadwal, tanggal_pesan, status_bayar)
-                VALUES (@id_user, @id_jadwal, CURRENT_DATE, 'Belum Bayar')
-                RETURNING id_pemesanan";
+                     INSERT INTO pemesanan (id_user, id_jadwal, id_lapangan, status_bayar, status_pemesanan)
+                     VALUES (@id_user, @id_jadwal, @id_lapangan, 'Belum Bayar', 'Aktif')
+                     RETURNING id_pemesanan";
+
 
                     int idPemesanan;
-                    using (var cmd = new NpgsqlCommand(insertPemesanan, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@id_user", idUser);
-                        cmd.Parameters.AddWithValue("@id_jadwal", idJadwal);
-                        idPemesanan = Convert.ToInt32(cmd.ExecuteScalar());
-                    }
+            using (var cmd = new NpgsqlCommand(insertPemesanan, conn))
+            {
+                cmd.Parameters.AddWithValue("@id_user", idUser);
+                cmd.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                cmd.Parameters.AddWithValue("@id_lapangan", idLapangan);
+                idPemesanan = Convert.ToInt32(cmd.ExecuteScalar());
+            }
 
-                    // Insert ke tabel detail_pemesanan
-                    string insertDetail = @"
+            // ✅ Insert ke detail_pemesanan
+            string insertDetail = @"
                 INSERT INTO detail_pemesanan (id_pemesanan, nama_pemesan, nohp_pemesan)
                 VALUES (@id_pemesanan, @nama, @nohp)";
 
-                    using (var cmd2 = new NpgsqlCommand(insertDetail, conn))
-                    {
-                        cmd2.Parameters.AddWithValue("@id_pemesanan", idPemesanan);
-                        cmd2.Parameters.AddWithValue("@nama", namaPemesan);
-                        cmd2.Parameters.AddWithValue("@nohp", noHP);
-                        cmd2.ExecuteNonQuery();
-                    }
+            using (var cmd2 = new NpgsqlCommand(insertDetail, conn))
+            {
+                cmd2.Parameters.AddWithValue("@id_pemesanan", idPemesanan);
+                cmd2.Parameters.AddWithValue("@nama", namaPemesan);
+                cmd2.Parameters.AddWithValue("@nohp", noHP);
+                cmd2.ExecuteNonQuery();
+            }
 
-                    // Hapus data dari cart setelah selesai pesan
-                    string deleteCart = @"
+            // ✅ Hapus data dari cart (opsional, tetap pakai)
+            string deleteCart = @"
                 DELETE FROM cart_pemesanan
                 WHERE id_user = @id_user AND id_jadwal = @id_jadwal";
 
-                    using (var cmdDel = new NpgsqlCommand(deleteCart, conn))
-                    {
-                        cmdDel.Parameters.AddWithValue("@id_user", idUser);
-                        cmdDel.Parameters.AddWithValue("@id_jadwal", idJadwal);
-                        cmdDel.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Pemesanan berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Kembali ke Dashboard
-                UserDashboardForm dashboard = new UserDashboardForm();
-                dashboard.Show();
-                this.Close();
-            }
-            catch (Exception ex)
+            using (var cmdDel = new NpgsqlCommand(deleteCart, conn))
             {
-                MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+                cmdDel.Parameters.AddWithValue("@id_user", idUser);
+                cmdDel.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                cmdDel.ExecuteNonQuery();
             }
+        }
+
+        MessageBox.Show("Pemesanan berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        // Kembali ke Dashboard
+        UserDashboardForm dashboard = new UserDashboardForm();
+        dashboard.Show();
+        this.Close();
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Terjadi kesalahan: " + ex.Message);
+    }
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -144,6 +154,16 @@ namespace Sewa_Lapangan.Views.User
             PesanLapanganForm pesanLapangan = new PesanLapanganForm();
             pesanLapangan.Show();
             this.Close();
+        }
+
+        private void txtNoHP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

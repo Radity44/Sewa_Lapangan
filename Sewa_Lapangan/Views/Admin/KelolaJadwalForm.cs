@@ -214,5 +214,17 @@ namespace Sewa_Lapangan.Views.Admin
             dashboard.Show();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateJadwalForm updateForm = new UpdateJadwalForm();
+            updateForm.Show();
+            this.Hide();
+        }
     }
 }

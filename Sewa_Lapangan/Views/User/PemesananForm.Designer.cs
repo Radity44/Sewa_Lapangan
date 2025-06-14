@@ -36,7 +36,7 @@
             lblJenisLapangan = new Label();
             groupBox2 = new GroupBox();
             btnSimpan = new Button();
-            label3 = new Label();
+            No_Hp = new Label();
             label2 = new Label();
             txtNoHP = new TextBox();
             txtNamaPemesan = new TextBox();
@@ -62,6 +62,7 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // lblJam
             // 
@@ -102,7 +103,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(btnSimpan);
-            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(No_Hp);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(txtNoHP);
             groupBox2.Controls.Add(txtNamaPemesan);
@@ -123,23 +124,23 @@
             btnSimpan.UseVisualStyleBackColor = true;
             btnSimpan.Click += btnSimpan_Click;
             // 
-            // label3
+            // No_Hp
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(31, 110);
-            label3.Name = "label3";
-            label3.Size = new Size(50, 20);
-            label3.TabIndex = 3;
-            label3.Text = "label3";
+            No_Hp.AutoSize = true;
+            No_Hp.Location = new Point(31, 110);
+            No_Hp.Name = "No_Hp";
+            No_Hp.Size = new Size(55, 20);
+            No_Hp.TabIndex = 3;
+            No_Hp.Text = "No_Hp";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(31, 40);
             label2.Name = "label2";
-            label2.Size = new Size(50, 20);
+            label2.Size = new Size(111, 20);
             label2.TabIndex = 2;
-            label2.Text = "label2";
+            label2.Text = "Nama Pemesan";
             // 
             // txtNoHP
             // 
@@ -147,6 +148,7 @@
             txtNoHP.Name = "txtNoHP";
             txtNoHP.Size = new Size(220, 27);
             txtNoHP.TabIndex = 1;
+            txtNoHP.TextChanged += txtNoHP_TextChanged;
             // 
             // txtNamaPemesan
             // 
@@ -229,7 +231,7 @@
         private Label lblJenisLapangan;
         private Label lblJam;
         private GroupBox groupBox2;
-        private Label label3;
+        private Label No_Hp;
         private Label label2;
         private TextBox txtNoHP;
         private TextBox txtNamaPemesan;

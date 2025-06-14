@@ -114,7 +114,13 @@ namespace Sewa_Lapangan.Views.Admin
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            SessionManager.UserId = 0;
+            SessionManager.UserName = "";
 
+            // Kembali ke form login
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Close();
         }
 
         private void btnKelolaJadwal_Click(object sender, EventArgs e)

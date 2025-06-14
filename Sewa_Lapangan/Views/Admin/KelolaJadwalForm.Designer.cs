@@ -48,7 +48,7 @@
             cmbNamaLapangan = new ComboBox();
             cmbJenisLapangan = new ComboBox();
             npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
-            button1 = new Button();
+            btnUpdate = new Button();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -244,21 +244,22 @@
             npgsqlDataAdapter1.SelectCommand = null;
             npgsqlDataAdapter1.UpdateCommand = null;
             // 
-            // button1
+            // btnUpdate
             // 
-            button1.Location = new Point(320, 413);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 29);
-            button1.TabIndex = 15;
-            button1.Text = "Update Jadwal";
-            button1.UseVisualStyleBackColor = true;
+            btnUpdate.Location = new Point(327, 413);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(148, 29);
+            btnUpdate.TabIndex = 16;
+            btnUpdate.Text = "Update Jadwal";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // KelolaJadwalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(btnUpdate);
             Controls.Add(groupBox1);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -294,6 +295,6 @@
         private NumericUpDown numDurasi;
         private Label label7;
         private TextBox txtTarif;
-        private Button button1;
+        private Button btnUpdate;
     }
 }
