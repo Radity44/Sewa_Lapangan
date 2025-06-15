@@ -100,7 +100,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvPesanan);
             Controls.Add(flowLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "PesanLapanganForm";
             Text = "PesanLapanganForm";
             Load += PesanLapanganForm_Load;

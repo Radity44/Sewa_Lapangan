@@ -262,7 +262,7 @@
             Controls.Add(btnUpdate);
             Controls.Add(groupBox1);
             Controls.Add(flowLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "KelolaJadwalForm";
             Text = "KelolaJadwalForm";
             flowLayoutPanel1.ResumeLayout(false);

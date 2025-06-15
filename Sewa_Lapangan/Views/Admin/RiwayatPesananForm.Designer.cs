@@ -100,7 +100,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvRiwayat);
             Controls.Add(flowLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "RiwayatPesananForm";
             Text = "RiwayatPesananForm";
             Load += RiwayatPesananForm_Load;
