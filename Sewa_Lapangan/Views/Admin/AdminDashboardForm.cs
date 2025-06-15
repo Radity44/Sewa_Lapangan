@@ -44,16 +44,17 @@ namespace Sewa_Lapangan.Views.Admin
             dgvDataUser.Columns.Add(hapusBtn);
 
             string query = @"
-                SELECT 
-                    u.id_user,
-                    u.nama AS nama_user,
-                    COUNT(p.id_pemesanan) AS total_pemesanan,
-                    COALESCE(SUM(p.total_biaya), 0) AS total_transaksi
-                FROM ""user"" u
-                LEFT JOIN pemesanan p ON u.id_user = p.id_user
-                GROUP BY u.id_user, u.nama
-                ORDER BY total_transaksi DESC;
-            ";
+    SELECT 
+        u.id_user,
+        u.nama AS nama_user,
+        COUNT(p.id_pemesanan) AS total_pemesanan,
+        COALESCE(SUM(p.total_biaya), 0) AS total_transaksi
+    FROM ""user"" u
+    LEFT JOIN pemesanan p ON u.id_user = p.id_user
+    WHERE u.role = 'pengguna' AND u.is_active = TRUE
+    GROUP BY u.id_user, u.nama
+    ORDER BY total_transaksi DESC;
+";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -83,10 +84,12 @@ namespace Sewa_Lapangan.Views.Admin
         private void LoadSummary()
         {
             string query = @"
-                SELECT 
-                    (SELECT COUNT(*) FROM ""user"") AS total_user,
-                    (SELECT COALESCE(SUM(total_biaya), 0) FROM pemesanan) AS total_transaksi;
-            ";
+        SELECT 
+            (SELECT COUNT(*) 
+             FROM ""user"" 
+             WHERE role = 'pengguna' AND is_active = TRUE) AS total_user,
+            (SELECT COALESCE(SUM(total_biaya), 0) FROM pemesanan) AS total_transaksi;
+    ";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -101,6 +104,7 @@ namespace Sewa_Lapangan.Views.Admin
                     }
                 }
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -183,14 +187,14 @@ namespace Sewa_Lapangan.Views.Admin
             using (var conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
-                string query = "DELETE FROM \"user\" WHERE id_user = @id";
+                string query = @"UPDATE ""user"" SET is_active = FALSE WHERE id_user = @id";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", idUser);
                     cmd.ExecuteNonQuery();
                 }
             }
-            MessageBox.Show("User berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("User berhasil dinonaktifkan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnRiwayatPesanan_Click(object sender, EventArgs e)
