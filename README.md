@@ -49,7 +49,7 @@ SewaLapangan adalah aplikasi desktop berbasis Windows Forms untuk sistem pemesan
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/username/sewalapangan.git
+git clone https://github.com/Radity4/sewa_lapangan.git
 ```
 
 ### 2️⃣ Buka Project di Visual Studio
