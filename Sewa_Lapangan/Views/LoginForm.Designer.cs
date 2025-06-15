@@ -79,7 +79,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(191, 245);
+            btnLogin.Location = new Point(193, 248);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(94, 29);
             btnLogin.TabIndex = 1;
@@ -105,7 +105,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(72, 153);
+            label3.Location = new Point(79, 165);
             label3.Name = "label3";
             label3.Size = new Size(70, 20);
             label3.TabIndex = 2;
@@ -114,7 +114,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(72, 89);
+            label2.Location = new Point(84, 95);
             label2.Name = "label2";
             label2.Size = new Size(46, 20);
             label2.TabIndex = 1;

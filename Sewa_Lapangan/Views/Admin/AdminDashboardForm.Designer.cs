@@ -55,6 +55,10 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             label1 = new Label();
             dgvDataUser = new DataGridView();
+            lblTotalUser = new Label();
+            lblTotalTransaksi = new Label();
+            U = new GroupBox();
+            groupBox2 = new GroupBox();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -68,6 +72,8 @@
             panel10.SuspendLayout();
             panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDataUser).BeginInit();
+            U.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -387,12 +393,53 @@
             dgvDataUser.RowHeadersWidth = 51;
             dgvDataUser.Size = new Size(694, 319);
             dgvDataUser.TabIndex = 5;
+            dgvDataUser.CellContentClick += dgvDataUser_CellContentClick;
+            // 
+            // lblTotalUser
+            // 
+            lblTotalUser.AutoSize = true;
+            lblTotalUser.Location = new Point(93, 48);
+            lblTotalUser.Name = "lblTotalUser";
+            lblTotalUser.Size = new Size(50, 20);
+            lblTotalUser.TabIndex = 6;
+            lblTotalUser.Text = "label2";
+            // 
+            // lblTotalTransaksi
+            // 
+            lblTotalTransaksi.AutoSize = true;
+            lblTotalTransaksi.Location = new Point(51, 46);
+            lblTotalTransaksi.Name = "lblTotalTransaksi";
+            lblTotalTransaksi.Size = new Size(50, 20);
+            lblTotalTransaksi.TabIndex = 7;
+            lblTotalTransaksi.Text = "label3";
+            // 
+            // U
+            // 
+            U.Controls.Add(lblTotalUser);
+            U.Location = new Point(312, 128);
+            U.Name = "U";
+            U.Size = new Size(276, 108);
+            U.TabIndex = 8;
+            U.TabStop = false;
+            U.Text = "User Terdaftar";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(lblTotalTransaksi);
+            groupBox2.Location = new Point(678, 130);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(276, 108);
+            groupBox2.TabIndex = 9;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Total Pendapatan";
             // 
             // AdminDashboardForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1000, 680);
+            Controls.Add(groupBox2);
+            Controls.Add(U);
             Controls.Add(dgvDataUser);
             Controls.Add(label1);
             Controls.Add(flowLayoutPanel1);
@@ -414,6 +461,10 @@
             panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDataUser).EndInit();
+            U.ResumeLayout(false);
+            U.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -446,5 +497,9 @@
         private Label GOSPORT;
         private Label label1;
         private DataGridView dgvDataUser;
+        private Label lblTotalUser;
+        private Label lblTotalTransaksi;
+        private GroupBox U;
+        private GroupBox groupBox2;
     }
 }

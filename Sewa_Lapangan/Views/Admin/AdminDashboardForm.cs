@@ -24,59 +24,80 @@ namespace Sewa_Lapangan.Views.Admin
 
         private void LoadDataUser()
         {
+            dgvDataUser.Rows.Clear();
+            dgvDataUser.Columns.Clear();
+
+            dgvDataUser.Columns.Add("No", "No");
+            dgvDataUser.Columns.Add("NamaUser", "Nama User");
+            dgvDataUser.Columns.Add("TotalPemesanan", "Total Pemesanan");
+            dgvDataUser.Columns.Add("TotalTransaksi", "Total Transaksi");
+            dgvDataUser.Columns.Add("IdUser", "Id User");
+            dgvDataUser.Columns["IdUser"].Visible = false;
+
+            DataGridViewButtonColumn hapusBtn = new DataGridViewButtonColumn
+            {
+                Name = "Hapus",
+                HeaderText = "Hapus Akun",
+                Text = "Hapus",
+                UseColumnTextForButtonValue = true
+            };
+            dgvDataUser.Columns.Add(hapusBtn);
+
             string query = @"
-        SELECT 
-            u.nama AS nama_user,
-            j.tanggal AS tanggal_booking,
-            l.nama_lapangan AS nama_lapangan
-        FROM 
-            pemesanan p
-        JOIN ""user"" u ON p.id_user = u.id_user
-        JOIN jadwal_lapangan j ON p.id_jadwal = j.id_jadwal
-        JOIN lapangan l ON p.id_lapangan = l.id_lapangan
-        ORDER BY j.tanggal DESC;
-    ";
+                SELECT 
+                    u.id_user,
+                    u.nama AS nama_user,
+                    COUNT(p.id_pemesanan) AS total_pemesanan,
+                    COALESCE(SUM(p.total_biaya), 0) AS total_transaksi
+                FROM ""user"" u
+                LEFT JOIN pemesanan p ON u.id_user = p.id_user
+                GROUP BY u.id_user, u.nama
+                ORDER BY total_transaksi DESC;
+            ";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
                 {
-                    using (var reader = cmd.ExecuteReader())
+                    int no = 1;
+                    while (reader.Read())
                     {
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
+                        dgvDataUser.Rows.Add(
+                            no++,
+                            reader["nama_user"].ToString(),
+                            reader["total_pemesanan"].ToString(),
+                            $"Rp {Convert.ToDecimal(reader["total_transaksi"]):N0}",
+                            reader["id_user"].ToString()
+                        );
+                    }
+                }
+            }
 
-                        // Tambahkan kolom nomor urut manual
-                        dt.Columns.Add("No", typeof(int));
+            dgvDataUser.AllowUserToAddRows = false;
+            dgvDataUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDataUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
 
-                        // Isi data nomor urut
-                        for (int i = 0; i < dt.Rows.Count; i++)
-                        {
-                            dt.Rows[i]["No"] = i + 1;
-                        }
+        private void LoadSummary()
+        {
+            string query = @"
+                SELECT 
+                    (SELECT COUNT(*) FROM ""user"") AS total_user,
+                    (SELECT COALESCE(SUM(total_biaya), 0) FROM pemesanan) AS total_transaksi;
+            ";
 
-                        // Pindahkan kolom No ke posisi paling depan
-                        dt.Columns["No"].SetOrdinal(0);
-
-                        // Tambahkan pengaturan visual
-                        dgvDataUser.RowHeadersVisible = false;
-
-                        // Binding langsung ke DataTable (tanpa DefaultView, tanpa ToTable)
-                        dgvDataUser.DataSource = dt;
-
-                        // Atur tampilan datagridview
-                        dgvDataUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        dgvDataUser.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                        dgvDataUser.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                        dgvDataUser.RowTemplate.Height = 30;
-                        dgvDataUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                        dgvDataUser.ReadOnly = true;
-
-                        dgvDataUser.Columns["No"].FillWeight = 10;  // kolom No kecil saja
-                        dgvDataUser.Columns["nama_user"].FillWeight = 40;
-                        dgvDataUser.Columns["tanggal_booking"].FillWeight = 30;
-                        dgvDataUser.Columns["nama_lapangan"].FillWeight = 20;
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        lblTotalUser.Text = $"Total User: {reader["total_user"]}";
+                        lblTotalTransaksi.Text = $"Total Pemasukan: Rp {Convert.ToDecimal(reader["total_transaksi"]):N0}";
                     }
                 }
             }
@@ -90,6 +111,7 @@ namespace Sewa_Lapangan.Views.Admin
         private void AdminDashboardForm_Load(object sender, EventArgs e)
         {
             LoadDataUser();
+            LoadSummary();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -138,5 +160,39 @@ namespace Sewa_Lapangan.Views.Admin
             kelolaPembayaran.Show();
             this.Hide();
         }
+
+        private void dgvDataUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvDataUser.Columns["Hapus"].Index && e.RowIndex >= 0)
+            {
+                int idUser = Convert.ToInt32(dgvDataUser.Rows[e.RowIndex].Cells["IdUser"].Value);
+                string namaUser = dgvDataUser.Rows[e.RowIndex].Cells["NamaUser"].Value.ToString();
+
+                var confirm = MessageBox.Show($"Yakin ingin menghapus user {namaUser}?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirm == DialogResult.Yes)
+                {
+                    HapusUser(idUser);
+                    LoadDataUser();
+                    LoadSummary();
+                }
+            }
+        }
+
+        private void HapusUser(int idUser)
+        {
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string query = "DELETE FROM \"user\" WHERE id_user = @id";
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", idUser);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            MessageBox.Show("User berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
     }
 }

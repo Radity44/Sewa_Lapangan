@@ -55,7 +55,7 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(264, 44);
+            panel1.Location = new Point(154, 46);
             panel1.Name = "panel1";
             panel1.Size = new Size(496, 348);
             panel1.TabIndex = 1;
@@ -153,6 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
             Name = "RegisterForm";

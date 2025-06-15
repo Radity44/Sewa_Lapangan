@@ -163,5 +163,20 @@ namespace Sewa_Lapangan.Views.User
         {
 
         }
+
+        private void lblTanggal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblJam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

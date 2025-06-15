@@ -44,6 +44,10 @@
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -52,6 +56,10 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(lblJam);
             groupBox1.Controls.Add(lblTarif);
             groupBox1.Controls.Add(lblTanggal);
@@ -61,44 +69,46 @@
             groupBox1.Size = new Size(395, 156);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Detail Jadwal";
             groupBox1.Enter += groupBox1_Enter;
             // 
             // lblJam
             // 
             lblJam.AutoSize = true;
-            lblJam.Location = new Point(20, 89);
+            lblJam.Location = new Point(163, 91);
             lblJam.Name = "lblJam";
-            lblJam.Size = new Size(50, 20);
+            lblJam.Size = new Size(13, 20);
             lblJam.TabIndex = 4;
-            lblJam.Text = "label3";
+            lblJam.Text = " ";
+            lblJam.Click += lblJam_Click;
             // 
             // lblTarif
             // 
             lblTarif.AutoSize = true;
-            lblTarif.Location = new Point(20, 120);
+            lblTarif.Location = new Point(163, 125);
             lblTarif.Name = "lblTarif";
-            lblTarif.Size = new Size(50, 20);
+            lblTarif.Size = new Size(13, 20);
             lblTarif.TabIndex = 3;
-            lblTarif.Text = "label4";
+            lblTarif.Text = " ";
             // 
             // lblTanggal
             // 
             lblTanggal.AutoSize = true;
-            lblTanggal.Location = new Point(20, 55);
+            lblTanggal.Location = new Point(163, 56);
             lblTanggal.Name = "lblTanggal";
-            lblTanggal.Size = new Size(50, 20);
+            lblTanggal.Size = new Size(13, 20);
             lblTanggal.TabIndex = 1;
-            lblTanggal.Text = "label2";
+            lblTanggal.Text = " ";
+            lblTanggal.Click += lblTanggal_Click;
             // 
             // lblJenisLapangan
             // 
             lblJenisLapangan.AutoSize = true;
-            lblJenisLapangan.Location = new Point(20, 24);
+            lblJenisLapangan.Location = new Point(163, 24);
             lblJenisLapangan.Name = "lblJenisLapangan";
-            lblJenisLapangan.Size = new Size(50, 20);
+            lblJenisLapangan.Size = new Size(13, 20);
             lblJenisLapangan.TabIndex = 0;
-            lblJenisLapangan.Text = "label1";
+            lblJenisLapangan.Text = " ";
             // 
             // groupBox2
             // 
@@ -112,7 +122,7 @@
             groupBox2.Size = new Size(395, 189);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBox2.Text = "Data pemesan";
             // 
             // btnSimpan
             // 
@@ -129,9 +139,9 @@
             No_Hp.AutoSize = true;
             No_Hp.Location = new Point(31, 110);
             No_Hp.Name = "No_Hp";
-            No_Hp.Size = new Size(55, 20);
+            No_Hp.Size = new Size(53, 20);
             No_Hp.TabIndex = 3;
-            No_Hp.Text = "No_Hp";
+            No_Hp.Text = "No Hp";
             // 
             // label2
             // 
@@ -202,6 +212,43 @@
             label1.Text = "Pemesanan";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(48, 24);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 20);
+            label3.TabIndex = 5;
+            label3.Text = "Lapangan  : ";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(48, 91);
+            label4.Name = "label4";
+            label4.Size = new Size(86, 20);
+            label4.TabIndex = 6;
+            label4.Text = "Jam            :";
+            label4.Click += label4_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(49, 125);
+            label5.Name = "label5";
+            label5.Size = new Size(85, 20);
+            label5.TabIndex = 7;
+            label5.Text = "Harga        :";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(49, 56);
+            label6.Name = "label6";
+            label6.Size = new Size(84, 20);
+            label6.TabIndex = 8;
+            label6.Text = "Tanggal     :";
+            // 
             // PemesananForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -240,5 +287,9 @@
         private Button btnback;
         private Label label1;
         private Button btnSimpan;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label6;
     }
 }

@@ -117,7 +117,7 @@
             groupBox1.Size = new Size(678, 357);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Edit Jadwal";
             groupBox1.Enter += groupBox1_Enter;
             // 
             // label7

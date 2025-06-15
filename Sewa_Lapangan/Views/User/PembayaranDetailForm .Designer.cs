@@ -46,6 +46,18 @@
             lblNoRekening = new Label();
             lblBank = new Label();
             cmbMetodePembayaran = new ComboBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -91,13 +103,25 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(55, 0);
             label1.Name = "label1";
-            label1.Size = new Size(160, 43);
+            label1.Size = new Size(145, 43);
             label1.TabIndex = 1;
-            label1.Text = "Kelola Jadwal";
+            label1.Text = "Pembayaran";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(label12);
+            groupBox1.Controls.Add(label13);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(lblNoHPPemesan);
             groupBox1.Controls.Add(lblNamaPemesan);
             groupBox1.Controls.Add(lblTarif);
@@ -109,12 +133,12 @@
             groupBox1.Size = new Size(515, 246);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            groupBox1.Text = "Detail Pesanan";
             // 
             // lblNoHPPemesan
             // 
             lblNoHPPemesan.AutoSize = true;
-            lblNoHPPemesan.Location = new Point(30, 214);
+            lblNoHPPemesan.Location = new Point(171, 212);
             lblNoHPPemesan.Name = "lblNoHPPemesan";
             lblNoHPPemesan.Size = new Size(50, 20);
             lblNoHPPemesan.TabIndex = 5;
@@ -123,7 +147,7 @@
             // lblNamaPemesan
             // 
             lblNamaPemesan.AutoSize = true;
-            lblNamaPemesan.Location = new Point(30, 175);
+            lblNamaPemesan.Location = new Point(171, 173);
             lblNamaPemesan.Name = "lblNamaPemesan";
             lblNamaPemesan.Size = new Size(50, 20);
             lblNamaPemesan.TabIndex = 4;
@@ -132,7 +156,7 @@
             // lblTarif
             // 
             lblTarif.AutoSize = true;
-            lblTarif.Location = new Point(30, 140);
+            lblTarif.Location = new Point(171, 138);
             lblTarif.Name = "lblTarif";
             lblTarif.Size = new Size(50, 20);
             lblTarif.TabIndex = 3;
@@ -141,7 +165,7 @@
             // lblJam
             // 
             lblJam.AutoSize = true;
-            lblJam.Location = new Point(30, 107);
+            lblJam.Location = new Point(171, 105);
             lblJam.Name = "lblJam";
             lblJam.Size = new Size(50, 20);
             lblJam.TabIndex = 2;
@@ -150,7 +174,7 @@
             // lblTanggal
             // 
             lblTanggal.AutoSize = true;
-            lblTanggal.Location = new Point(30, 72);
+            lblTanggal.Location = new Point(171, 70);
             lblTanggal.Name = "lblTanggal";
             lblTanggal.Size = new Size(50, 20);
             lblTanggal.TabIndex = 1;
@@ -159,7 +183,7 @@
             // lblJenisLapangan
             // 
             lblJenisLapangan.AutoSize = true;
-            lblJenisLapangan.Location = new Point(30, 38);
+            lblJenisLapangan.Location = new Point(171, 36);
             lblJenisLapangan.Name = "lblJenisLapangan";
             lblJenisLapangan.Size = new Size(50, 20);
             lblJenisLapangan.TabIndex = 0;
@@ -177,7 +201,7 @@
             groupBox2.Size = new Size(520, 187);
             groupBox2.TabIndex = 4;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBox2.Text = "Pilih Pembayaran";
             // 
             // lblAtasNama
             // 
@@ -225,6 +249,114 @@
             cmbMetodePembayaran.TabIndex = 0;
             cmbMetodePembayaran.SelectedIndexChanged += cmbMetodePembayaran_SelectedIndexChanged;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(33, 212);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 20);
+            label2.TabIndex = 11;
+            label2.Text = "No HP";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(33, 173);
+            label3.Name = "label3";
+            label3.Size = new Size(111, 20);
+            label3.TabIndex = 10;
+            label3.Text = "Nama Pemesan";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(33, 138);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 20);
+            label4.TabIndex = 9;
+            label4.Text = "Total Biaya";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(33, 105);
+            label5.Name = "label5";
+            label5.Size = new Size(35, 20);
+            label5.TabIndex = 8;
+            label5.Text = "Jam";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(33, 70);
+            label6.Name = "label6";
+            label6.Size = new Size(61, 20);
+            label6.TabIndex = 7;
+            label6.Text = "Tanggal";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(33, 36);
+            label7.Name = "label7";
+            label7.Size = new Size(74, 20);
+            label7.TabIndex = 6;
+            label7.Text = "Lapangan";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(153, 212);
+            label8.Name = "label8";
+            label8.Size = new Size(12, 20);
+            label8.TabIndex = 17;
+            label8.Text = ":";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(153, 173);
+            label9.Name = "label9";
+            label9.Size = new Size(12, 20);
+            label9.TabIndex = 16;
+            label9.Text = ":";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(153, 138);
+            label10.Name = "label10";
+            label10.Size = new Size(12, 20);
+            label10.TabIndex = 15;
+            label10.Text = ":";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(153, 105);
+            label11.Name = "label11";
+            label11.Size = new Size(12, 20);
+            label11.TabIndex = 14;
+            label11.Text = ":";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(153, 70);
+            label12.Name = "label12";
+            label12.Size = new Size(12, 20);
+            label12.TabIndex = 13;
+            label12.Text = ":";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(153, 36);
+            label13.Name = "label13";
+            label13.Size = new Size(12, 20);
+            label13.TabIndex = 12;
+            label13.Text = ":";
+            // 
             // PembayaranDetailForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -265,5 +397,17 @@
         private Label lblBank;
         private ComboBox cmbMetodePembayaran;
         private Label lblAtasNama;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
     }
 }
