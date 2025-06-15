@@ -1,0 +1,121 @@
+SewaLapangan - Aplikasi Booking & Manajemen Lapangan Olahraga
+SewaLapangan adalah aplikasi desktop berbasis Windows Forms untuk sistem pemesanan lapangan olahraga (futsal, badminton, tennis, dll) yang menyediakan dua role utama yaitu Admin dan User (Pelanggan).
+Aplikasi ini terintegrasi dengan database PostgreSQL dan menyediakan manajemen jadwal, pemesanan, pembayaran hingga laporan transaksi.
+
+📌 Fitur Utama
+1️⃣ Role Admin
+Admin memiliki kontrol penuh terhadap sistem:
+
+Manajemen Jadwal Lapangan
+
+Menambahkan, mengedit, dan menghapus jadwal ketersediaan lapangan.
+
+Kelola Pembayaran (Verifikasi Pembayaran)
+
+Melihat daftar pembayaran dari user dan melakukan verifikasi pembayaran.
+
+Mengubah status pembayaran menjadi Lunas atau Gagal.
+
+Dashboard Laporan
+
+Melihat data seluruh user.
+
+Melihat total pemasukan.
+
+Melihat total pemesanan.
+
+Melakukan penghapusan akun user.
+
+2️⃣ Role User (Pelanggan)
+User melakukan pemesanan dan pembayaran:
+
+Pilih Jadwal Lapangan
+
+Melihat jadwal tersedia, memilih jadwal, dan melakukan booking.
+
+Pemesanan & Pembayaran
+
+Memasukkan detail pemesan dan melakukan pembayaran via cash atau transfer.
+
+Riwayat Pemesanan
+
+Melihat daftar transaksi dan status pembayaran.
+
+Update Status Pembayaran
+
+Secara otomatis memperbarui status pembayaran setelah diverifikasi oleh admin.
+
+⚙️ Struktur Project (Architecture)
+📂 Controllers
+AuthController.cs → Logika login dan register user.
+
+📂 Models
+DatabaseHelper.cs → Koneksi database PostgreSQL.
+
+JenisLapanganItem.cs → Model untuk data jenis lapangan.
+
+LapanganItem.cs → Model untuk data lapangan.
+
+SessionManager.cs → Menyimpan data user yang login.
+
+StatusPembayaran.cs → Konstanta status pembayaran.
+
+UserModel.cs → Struktur data user.
+
+📂 Views
+LoginForm.cs, RegisterForm.cs → Form login dan registrasi.
+
+AdminDashboardForm.cs → Dashboard admin.
+
+KelolaJadwalForm.cs → Manajemen jadwal.
+
+KelolaPembayaranForm.cs → Verifikasi pembayaran.
+
+PemesananForm.cs → Form pemesanan user.
+
+PembayaranDetailForm.cs → Form detail pembayaran.
+
+ListPembayaranForm.cs → Daftar pembayaran user.
+
+RiwayatPesananForm.cs → History transaksi user.
+
+💾 Instalasi & Menjalankan Aplikasi
+1️⃣ Clone Repository
+bash
+Salin
+Edit
+git clone https://github.com/username/sewalapangan.git
+2️⃣ Buka Project di Visual Studio
+Buka Visual Studio.
+
+Pilih Open Project.
+
+Arahkan ke folder hasil clone.
+
+3️⃣ Konfigurasi Database
+Pastikan sudah install PostgreSQL.
+
+Buat database sesuai dengan skema sewa_lapangan.sql.
+
+Update koneksi database di DatabaseHelper.cs:
+
+csharp
+Salin
+Edit
+private static string connectionString = "Host=localhost;Port=5432;Database=sewa_lapangan;Username=postgres;Password=yourpassword";
+4️⃣ Jalankan Aplikasi
+Tekan tombol Start atau tekan F5 di Visual Studio.
+
+Aplikasi berjalan secara lokal di desktop Windows Anda.
+
+🔧 Teknologi yang Digunakan
+Bahasa Pemrograman: C#
+
+Framework: Windows Forms (WinForms)
+
+Database: PostgreSQL
+
+IDE: Visual Studio 2022
+
+Arsitektur: MVC Sederhana (Controllers - Models - Views)
+
