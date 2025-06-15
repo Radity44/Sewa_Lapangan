@@ -44,10 +44,10 @@
             panel7 = new Panel();
             btnKelolaTransaksi = new Button();
             button5 = new Button();
-            panel8 = new Panel();
-            panel9 = new Panel();
-            btnLihatRiwayat = new Button();
-            button7 = new Button();
+            panel14 = new Panel();
+            panel15 = new Panel();
+            btnRiwayatPesanan = new Button();
+            button8 = new Button();
             panel10 = new Panel();
             panel11 = new Panel();
             btnLogout = new Button();
@@ -67,8 +67,8 @@
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
-            panel8.SuspendLayout();
-            panel9.SuspendLayout();
+            panel14.SuspendLayout();
+            panel15.SuspendLayout();
             panel10.SuspendLayout();
             panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDataUser).BeginInit();
@@ -83,7 +83,7 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Controls.Add(panel6);
-            flowLayoutPanel1.Controls.Add(panel8);
+            flowLayoutPanel1.Controls.Add(panel14);
             flowLayoutPanel1.Controls.Add(panel10);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
@@ -268,57 +268,57 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             // 
-            // panel8
+            // panel14
             // 
-            panel8.Controls.Add(panel9);
-            panel8.Controls.Add(button7);
-            panel8.Location = new Point(3, 296);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(242, 62);
-            panel8.TabIndex = 4;
+            panel14.Controls.Add(panel15);
+            panel14.Controls.Add(button8);
+            panel14.Location = new Point(3, 296);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(242, 62);
+            panel14.TabIndex = 5;
             // 
-            // panel9
+            // panel15
             // 
-            panel9.Controls.Add(btnLihatRiwayat);
-            panel9.Location = new Point(0, 8);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(250, 70);
-            panel9.TabIndex = 3;
+            panel15.Controls.Add(btnRiwayatPesanan);
+            panel15.Location = new Point(0, 8);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(250, 70);
+            panel15.TabIndex = 3;
             // 
-            // btnLihatRiwayat
+            // btnRiwayatPesanan
             // 
-            btnLihatRiwayat.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnLihatRiwayat.BackColor = Color.FromArgb(35, 40, 45);
-            btnLihatRiwayat.BackgroundImageLayout = ImageLayout.None;
-            btnLihatRiwayat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLihatRiwayat.ForeColor = Color.White;
-            btnLihatRiwayat.Image = (Image)resources.GetObject("btnLihatRiwayat.Image");
-            btnLihatRiwayat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLihatRiwayat.Location = new Point(-5, -54);
-            btnLihatRiwayat.Name = "btnLihatRiwayat";
-            btnLihatRiwayat.Size = new Size(286, 164);
-            btnLihatRiwayat.TabIndex = 0;
-            btnLihatRiwayat.Text = "             Lihat Riwayat";
-            btnLihatRiwayat.TextAlign = ContentAlignment.MiddleLeft;
-            btnLihatRiwayat.UseVisualStyleBackColor = false;
-            btnLihatRiwayat.Click += button6_Click;
+            btnRiwayatPesanan.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRiwayatPesanan.BackColor = Color.FromArgb(35, 40, 45);
+            btnRiwayatPesanan.BackgroundImageLayout = ImageLayout.None;
+            btnRiwayatPesanan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRiwayatPesanan.ForeColor = Color.White;
+            btnRiwayatPesanan.Image = (Image)resources.GetObject("btnRiwayatPesanan.Image");
+            btnRiwayatPesanan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRiwayatPesanan.Location = new Point(-5, -54);
+            btnRiwayatPesanan.Name = "btnRiwayatPesanan";
+            btnRiwayatPesanan.Size = new Size(286, 164);
+            btnRiwayatPesanan.TabIndex = 0;
+            btnRiwayatPesanan.Text = "             Lihat Riwayat";
+            btnRiwayatPesanan.TextAlign = ContentAlignment.MiddleLeft;
+            btnRiwayatPesanan.UseVisualStyleBackColor = false;
+            btnRiwayatPesanan.Click += btnRiwayatPesanan_Click;
             // 
-            // button7
+            // button8
             // 
-            button7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button7.BackColor = Color.FromArgb(35, 40, 45);
-            button7.BackgroundImageLayout = ImageLayout.None;
-            button7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button7.ForeColor = Color.White;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(-5, -52);
-            button7.Name = "button7";
-            button7.Size = new Size(286, 164);
-            button7.TabIndex = 0;
-            button7.Text = "             Beranda";
-            button7.TextAlign = ContentAlignment.MiddleLeft;
-            button7.UseVisualStyleBackColor = false;
+            button8.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button8.BackColor = Color.FromArgb(35, 40, 45);
+            button8.BackgroundImageLayout = ImageLayout.None;
+            button8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button8.ForeColor = Color.White;
+            button8.Image = (Image)resources.GetObject("button8.Image");
+            button8.ImageAlign = ContentAlignment.MiddleLeft;
+            button8.Location = new Point(-5, -52);
+            button8.Name = "button8";
+            button8.Size = new Size(286, 164);
+            button8.TabIndex = 0;
+            button8.Text = "             Beranda";
+            button8.TextAlign = ContentAlignment.MiddleLeft;
+            button8.UseVisualStyleBackColor = false;
             // 
             // panel10
             // 
@@ -388,7 +388,7 @@
             // 
             dgvDataUser.AllowUserToAddRows = false;
             dgvDataUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDataUser.Location = new Point(277, 319);
+            dgvDataUser.Location = new Point(281, 278);
             dgvDataUser.Name = "dgvDataUser";
             dgvDataUser.RowHeadersWidth = 51;
             dgvDataUser.Size = new Size(694, 319);
@@ -456,8 +456,8 @@
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            panel9.ResumeLayout(false);
+            panel14.ResumeLayout(false);
+            panel15.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDataUser).EndInit();
@@ -501,5 +501,13 @@
         private Label lblTotalTransaksi;
         private GroupBox U;
         private GroupBox groupBox2;
+        private Panel panel12;
+        private Panel panel13;
+        private Button button2;
+        private Button button4;
+        private Panel panel14;
+        private Panel panel15;
+        private Button btnRiwayatPesanan;
+        private Button button8;
     }
 }

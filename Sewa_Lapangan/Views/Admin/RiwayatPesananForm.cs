@@ -34,45 +34,53 @@ namespace Sewa_Lapangan.Views.Admin
             dgvRiwayat.Columns.Add("Metode", "Metode Pembayaran");
             dgvRiwayat.Columns.Add("StatusPembayaran", "Status Pembayaran");
 
-            using (var conn = DatabaseHelper.GetConnection())
+            try
             {
-                conn.Open();
-                string query = @"
-                    SELECT u.nama AS nama_user, jenis.nama_jenis, l.nama_lapangan, 
-                           j.tanggal, j.jam_mulai, j.jam_selesai, j.tarif, 
-                           mp.nama_metode, pb.status_pembayaran
-                    FROM pembayaran pb
-                    JOIN pemesanan p ON pb.id_pemesanan = p.id_pemesanan
-                    JOIN ""user"" u ON p.id_user = u.id_user
-                    JOIN jadwal_lapangan j ON p.id_jadwal = j.id_jadwal
-                    JOIN lapangan l ON j.id_lapangan = l.id_lapangan
-                    JOIN jenis_lapangan jenis ON l.id_jenis = jenis.id_jenis
-                    JOIN metode_pembayaran mp ON pb.id_metode = mp.id_metode
-                    ORDER BY pb.id_pembayaran DESC";
-
-                using (var cmd = new NpgsqlCommand(query, conn))
-                using (var reader = cmd.ExecuteReader())
+                using (var conn = DatabaseHelper.GetConnection())
                 {
-                    int no = 1;
-                    while (reader.Read())
+                    conn.Open();
+                    string query = @"
+                        SELECT u.nama AS nama_user, jenis.nama_jenis, l.nama_lapangan, 
+                               j.tanggal, j.jam_mulai, j.jam_selesai, j.tarif, 
+                               mp.nama_metode, pb.status_pembayaran
+                        FROM pembayaran pb
+                        JOIN pemesanan p ON pb.id_pemesanan = p.id_pemesanan
+                        JOIN ""user"" u ON p.id_user = u.id_user
+                        JOIN jadwal_lapangan j ON p.id_jadwal = j.id_jadwal
+                        JOIN lapangan l ON j.id_lapangan = l.id_lapangan
+                        JOIN jenis_lapangan jenis ON l.id_jenis = jenis.id_jenis
+                        JOIN metode_pembayaran mp ON pb.id_metode = mp.id_metode
+                        ORDER BY pb.id_pembayaran DESC";
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        dgvRiwayat.Rows.Add(
-                            no++,
-                            reader["nama_user"].ToString(),
-                            $"{reader["nama_jenis"]} - {reader["nama_lapangan"]}",
-                            Convert.ToDateTime(reader["tanggal"]).ToString("yyyy-MM-dd"),
-                            $"{reader["jam_mulai"]} - {reader["jam_selesai"]}",
-                            reader["tarif"].ToString(),
-                            reader["nama_metode"].ToString(),
-                            reader["status_pembayaran"].ToString()
-                        );
+                        int no = 1;
+                        while (reader.Read())
+                        {
+                            dgvRiwayat.Rows.Add(
+                                no++,
+                                reader["nama_user"].ToString(),
+                                $"{reader["nama_jenis"]} - {reader["nama_lapangan"]}",
+                                Convert.ToDateTime(reader["tanggal"]).ToString("yyyy-MM-dd"),
+                                $"{reader["jam_mulai"]} - {reader["jam_selesai"]}",
+                                Convert.ToInt32(reader["tarif"]).ToString("N0"),
+                                reader["nama_metode"].ToString(),
+                                reader["status_pembayaran"].ToString()
+                            );
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Terjadi kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             dgvRiwayat.AllowUserToAddRows = false;
             dgvRiwayat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRiwayat.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRiwayat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -84,9 +92,7 @@ namespace Sewa_Lapangan.Views.Admin
 
         private void RiwayatPesananForm_Load(object sender, EventArgs e)
         {
-            AdminDashboardForm dash = new AdminDashboardForm();
-            dash.Show();
-            this.Close();
+
         }
 
         private void dgvRiwayat_CellContentClick(object sender, DataGridViewCellEventArgs e)

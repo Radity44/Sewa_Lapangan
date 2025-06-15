@@ -26,7 +26,7 @@ namespace Sewa_Lapangan.Views.Admin
             dgvJadwal.Rows.Clear();
             dgvJadwal.Columns.Clear();
 
-            // Kolom manual dengan urutan benar:
+            // Kolom manual:
             dgvJadwal.Columns.Add("No", "No");
             dgvJadwal.Columns.Add("JenisLapangan", "Jenis Lapangan");
             dgvJadwal.Columns.Add("NamaLapangan", "Nama Lapangan");
@@ -35,7 +35,7 @@ namespace Sewa_Lapangan.Views.Admin
             dgvJadwal.Columns.Add("JamSelesai", "Jam Selesai");
             dgvJadwal.Columns.Add("Tarif", "Tarif");
             dgvJadwal.Columns.Add("Status", "Status");
-            dgvJadwal.Columns.Add("IdJadwal", "Id Jadwal");  // taruh id di paling belakang
+            dgvJadwal.Columns.Add("IdJadwal", "Id Jadwal");
             dgvJadwal.Columns["IdJadwal"].Visible = false;
 
             // Tombol Edit
@@ -55,12 +55,16 @@ namespace Sewa_Lapangan.Views.Admin
             dgvJadwal.Columns.Add(hapusBtn);
 
             string query = @"
-        SELECT jl.id_jadwal, jl.tanggal, jl.jam_mulai, jl.jam_selesai, jl.tarif, jl.status, 
-               l.nama_lapangan, j.nama_jenis
-        FROM jadwal_lapangan jl
-        JOIN lapangan l ON jl.id_lapangan = l.id_lapangan
-        JOIN jenis_lapangan j ON l.id_jenis = j.id_jenis
-        ORDER BY jl.tanggal DESC, jl.jam_mulai ASC;";
+            SELECT jl.id_jadwal, jl.tanggal, jl.jam_mulai, jl.jam_selesai, jl.tarif, jl.status, 
+            l.nama_lapangan, j.nama_jenis
+            FROM jadwal_lapangan jl
+            JOIN lapangan l ON jl.id_lapangan = l.id_lapangan
+            JOIN jenis_lapangan j ON l.id_jenis = j.id_jenis
+            WHERE jl.status = 'Tersedia'
+            AND jl.id_jadwal NOT IN (SELECT id_jadwal FROM pemesanan)
+            AND jl.tanggal >= CURRENT_DATE
+            ORDER BY jl.tanggal DESC, jl.jam_mulai ASC;
+";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -89,6 +93,7 @@ namespace Sewa_Lapangan.Views.Admin
             dgvJadwal.AllowUserToAddRows = false;
             dgvJadwal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvJadwal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
 

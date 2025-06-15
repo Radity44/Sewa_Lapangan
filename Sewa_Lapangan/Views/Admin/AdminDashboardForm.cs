@@ -193,6 +193,14 @@ namespace Sewa_Lapangan.Views.Admin
             MessageBox.Show("User berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void btnRiwayatPesanan_Click(object sender, EventArgs e)
+        {
+            RiwayatPesananForm riwayatForm = new RiwayatPesananForm();
+            riwayatForm.Show();
 
+            // Tutup / hide form dashboard sekarang
+            this.Hide();
+
+        }
     }
 }
