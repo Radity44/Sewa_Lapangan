@@ -33,16 +33,27 @@ SewaLapangan adalah aplikasi desktop berbasis Windows Forms untuk sistem pemesan
 - StatusPembayaran.cs
 - UserModel.cs
 
-### 📂 Views
+### 👑 Admin
 
-- LoginForm.cs, RegisterForm.cs
 - AdminDashboardForm.cs
+- EditJadwalForm.cs
 - KelolaJadwalForm.cs
 - KelolaPembayaranForm.cs
-- PemesananForm.cs
-- PembayaranDetailForm.cs
-- ListPembayaranForm.cs
 - RiwayatPesananForm.cs
+- UpdateJadwalForm.cs
+
+### 👑 User
+- LihatJadwalForm.cs
+- ListPembayaranForm.cs
+- PembayaranDetailForm.cs
+- PemesananForm.cs
+- PesanLapanganForm.cs
+- RiwayatPesananForm.cs
+- UserDashboardForm.cs
+
+### 🔐 Login & Register
+- RegisterForm.cs
+- LoginForm.cs
 
 ## 💾 Instalasi & Menjalankan Aplikasi
 
