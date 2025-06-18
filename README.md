@@ -1,7 +1,7 @@
 
 # SewaLapangan - Aplikasi Booking & Manajemen Lapangan Olahraga
 
-SewaLapangan adalah aplikasi desktop berbasis Windows Forms untuk sistem pemesanan lapangan olahraga seperti futsal, badminton, dan tennis. Aplikasi ini menyediakan dua role utama yaitu Admin dan User (Pelanggan), yang dapat melakukan pemesanan, pembayaran, dan pengelolaan data.
+SewaLapangan adalah aplikasi desktop berbasis Windows Forms untuk sistem pemesanan lapangan olahraga seperti Futsal, Badminton, dan Voly. Aplikasi ini menyediakan dua role utama yaitu Admin dan User (Pelanggan), yang dapat melakukan pemesanan, pembayaran, dan pengelolaan data.
 
 ## 📌 Fitur Utama
 
