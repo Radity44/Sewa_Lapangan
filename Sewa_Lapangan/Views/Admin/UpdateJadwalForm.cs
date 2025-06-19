@@ -112,9 +112,14 @@ namespace Sewa_Lapangan.Views.Admin
 
                 if (dgvJadwal.Columns[e.ColumnIndex].Name == "Edit")
                 {
+                    this.Hide();
                     EditJadwalForm editForm = new EditJadwalForm(idJadwal);
-                    editForm.ShowDialog();
-                    LoadDataJadwal();
+                    var result = editForm.ShowDialog(); // buka sebagai dialog modal
+                    this.Show();
+                    if (result == DialogResult.OK)
+                    {
+                        LoadDataJadwal(); // hanya refresh jika update sukses
+                    }
                 }
 
                 if (dgvJadwal.Columns[e.ColumnIndex].Name == "Hapus")

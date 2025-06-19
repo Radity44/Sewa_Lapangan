@@ -149,6 +149,12 @@ namespace Sewa_Lapangan.Views.Admin
                 return;
             }
 
+            if (durasi <= 0)
+            {
+                MessageBox.Show("Durasi minimal 1 jam.", "Validasi Durasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (!int.TryParse(tarifStr, out int tarif))
             {
                 MessageBox.Show("Tarif harus berupa angka.");
@@ -163,12 +169,37 @@ namespace Sewa_Lapangan.Views.Admin
                 {
                     conn.Open();
 
+                    // ✅ CEK JADWAL BENTROK
+                    string cekQuery = @"
+                SELECT COUNT(*) FROM jadwal_lapangan
+                WHERE id_lapangan = @id_lapangan
+                AND tanggal = @tanggal
+                AND (
+                    (jam_mulai < @jam_selesai AND jam_selesai > @jam_mulai)
+                )";
+
+                    using (var cekCmd = new NpgsqlCommand(cekQuery, conn))
+                    {
+                        cekCmd.Parameters.AddWithValue("@id_lapangan", namaLapangan.Id);
+                        cekCmd.Parameters.AddWithValue("@tanggal", tanggal);
+                        cekCmd.Parameters.AddWithValue("@jam_mulai", jamMulai);
+                        cekCmd.Parameters.AddWithValue("@jam_selesai", jamSelesai);
+
+                        int konflik = Convert.ToInt32(cekCmd.ExecuteScalar());
+                        if (konflik > 0)
+                        {
+                            MessageBox.Show("Jadwal bentrok dengan jadwal lain di lapangan ini.", "Konflik Jadwal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+
+                    // ✅ SIMPAN JADWAL
                     string query = @"
-                        INSERT INTO jadwal_lapangan 
-                        (id_lapangan, tanggal, jam_mulai, jam_selesai, tarif, status)
-                        VALUES 
-                        (@id_lapangan, @tanggal, @jam_mulai, @jam_selesai, @tarif, @status);
-                    ";
+                INSERT INTO jadwal_lapangan 
+                (id_lapangan, tanggal, jam_mulai, jam_selesai, tarif, status)
+                VALUES 
+                (@id_lapangan, @tanggal, @jam_mulai, @jam_selesai, @tarif, @status);
+            ";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
                     {
@@ -190,7 +221,6 @@ namespace Sewa_Lapangan.Views.Admin
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

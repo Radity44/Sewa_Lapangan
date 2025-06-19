@@ -136,9 +136,22 @@ namespace Sewa_Lapangan.Views.User
                         cmdDel.Parameters.AddWithValue("@id_jadwal", idJadwal);
                         cmdDel.ExecuteNonQuery();
                     }
+
+                    // 5️⃣ Update status jadwal menjadi 'Terpesan'
+                    string updateStatus = @"
+                UPDATE jadwal_lapangan
+                SET status = 'Terpesan'
+                WHERE id_jadwal = @id_jadwal";
+
+                    using (var cmdStatus = new NpgsqlCommand(updateStatus, conn))
+                    {
+                        cmdStatus.Parameters.AddWithValue("@id_jadwal", idJadwal);
+                        cmdStatus.ExecuteNonQuery();
+                    }
                 }
 
                 MessageBox.Show("Pemesanan berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK; // memberi sinyal ke pemanggil
                 this.Close();
             }
             catch (Exception ex)

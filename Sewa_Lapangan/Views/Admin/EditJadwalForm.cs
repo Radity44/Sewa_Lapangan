@@ -191,6 +191,7 @@ namespace Sewa_Lapangan.Views.Admin
                 }
 
                 MessageBox.Show("Data berhasil diupdate!");
+                this.DialogResult = DialogResult.OK; // beri tanda ke form pemanggil
                 this.Close();
             }
             catch (Exception ex)
@@ -206,9 +207,8 @@ namespace Sewa_Lapangan.Views.Admin
 
         private void btnback_Click_1(object sender, EventArgs e)
         {
-            KelolaJadwalForm KelolaJadwal = new KelolaJadwalForm();
-            KelolaJadwal.Show();
-            this.Close();
+            this.DialogResult = DialogResult.Cancel; // atau DialogResult.None jika tidak penting
+            this.Close(); // tutup EditJadwalForm
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

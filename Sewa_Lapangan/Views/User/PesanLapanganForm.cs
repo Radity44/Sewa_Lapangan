@@ -139,11 +139,16 @@ namespace Sewa_Lapangan.Views.User
             if (e.RowIndex >= 0 && dgvPesanan.Columns[e.ColumnIndex].Name == "Detail")
             {
                 int idJadwal = Convert.ToInt32(dgvPesanan.Rows[e.RowIndex].Cells["IdJadwal"].Value);
-                PemesananForm pemesananForm = new PemesananForm(idJadwal, SessionManager.UserId);
-                pemesananForm.ShowDialog();
-                LoadPesanan();  // refresh setelah selesai transaksi
-            }
 
+                using (var pemesananForm = new PemesananForm(idJadwal, SessionManager.UserId))
+                {
+                    var result = pemesananForm.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        LoadPesanan();  // hanya reload jika berhasil
+                    }
+                }
+            }
         }
 
         private void btnback_Click(object sender, EventArgs e)

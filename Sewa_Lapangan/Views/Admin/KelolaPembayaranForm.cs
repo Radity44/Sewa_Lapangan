@@ -135,6 +135,7 @@ namespace Sewa_Lapangan.Views.Admin
             {
                 conn.Open();
 
+                // 1️⃣ Update status pembayaran
                 string updateBayar = @"UPDATE pembayaran SET status_pembayaran = @status WHERE id_pembayaran = @id";
                 using (var cmd = new NpgsqlCommand(updateBayar, conn))
                 {
@@ -143,12 +144,33 @@ namespace Sewa_Lapangan.Views.Admin
                     cmd.ExecuteNonQuery();
                 }
 
+                // 2️⃣ Update status_bayar di pemesanan
                 string updatePesan = @"UPDATE pemesanan SET status_bayar = @status WHERE id_pemesanan = (SELECT id_pemesanan FROM pembayaran WHERE id_pembayaran = @id)";
                 using (var cmd2 = new NpgsqlCommand(updatePesan, conn))
                 {
                     cmd2.Parameters.AddWithValue("@status", statusBaru);
                     cmd2.Parameters.AddWithValue("@id", idPembayaran);
                     cmd2.ExecuteNonQuery();
+                }
+
+                // 3️⃣ Jika ditolak, jadwal dikembalikan menjadi 'Tersedia'
+                if (statusBaru == StatusPembayaran.Gagal)
+                {
+                    string updateJadwal = @"
+                UPDATE jadwal_lapangan 
+                SET status = 'Tersedia' 
+                WHERE id_jadwal = (
+                    SELECT p.id_jadwal 
+                    FROM pemesanan p
+                    JOIN pembayaran pb ON pb.id_pemesanan = p.id_pemesanan
+                    WHERE pb.id_pembayaran = @id
+                )";
+
+                    using (var cmd3 = new NpgsqlCommand(updateJadwal, conn))
+                    {
+                        cmd3.Parameters.AddWithValue("@id", idPembayaran);
+                        cmd3.ExecuteNonQuery();
+                    }
                 }
             }
 

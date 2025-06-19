@@ -244,6 +244,7 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numDurasi).EndInit();
             ResumeLayout(false);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
         }
 
         #endregion
