@@ -398,7 +398,7 @@
             // lblTotalUser
             // 
             lblTotalUser.AutoSize = true;
-            lblTotalUser.Location = new Point(93, 48);
+            lblTotalUser.Location = new Point(80, 48);
             lblTotalUser.Name = "lblTotalUser";
             lblTotalUser.Size = new Size(50, 20);
             lblTotalUser.TabIndex = 6;
@@ -407,7 +407,7 @@
             // lblTotalTransaksi
             // 
             lblTotalTransaksi.AutoSize = true;
-            lblTotalTransaksi.Location = new Point(51, 46);
+            lblTotalTransaksi.Location = new Point(35, 46);
             lblTotalTransaksi.Name = "lblTotalTransaksi";
             lblTotalTransaksi.Size = new Size(50, 20);
             lblTotalTransaksi.TabIndex = 7;

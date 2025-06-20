@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PemesananForm));
             groupBox1 = new GroupBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
             lblJam = new Label();
             lblTarif = new Label();
             lblTanggal = new Label();
@@ -44,10 +48,6 @@
             panel1 = new Panel();
             btnback = new Button();
             label1 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -71,6 +71,43 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Detail Jadwal";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(49, 56);
+            label6.Name = "label6";
+            label6.Size = new Size(84, 20);
+            label6.TabIndex = 8;
+            label6.Text = "Tanggal     :";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(49, 125);
+            label5.Name = "label5";
+            label5.Size = new Size(85, 20);
+            label5.TabIndex = 7;
+            label5.Text = "Harga        :";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(48, 91);
+            label4.Name = "label4";
+            label4.Size = new Size(86, 20);
+            label4.TabIndex = 6;
+            label4.Text = "Jam            :";
+            label4.Click += label4_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(48, 24);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 20);
+            label3.TabIndex = 5;
+            label3.Text = "Lapangan  : ";
             // 
             // lblJam
             // 
@@ -123,6 +160,7 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Data pemesan";
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // btnSimpan
             // 
@@ -211,43 +249,6 @@
             label1.TabIndex = 1;
             label1.Text = "Pemesanan";
             label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(48, 24);
-            label3.Name = "label3";
-            label3.Size = new Size(89, 20);
-            label3.TabIndex = 5;
-            label3.Text = "Lapangan  : ";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(48, 91);
-            label4.Name = "label4";
-            label4.Size = new Size(86, 20);
-            label4.TabIndex = 6;
-            label4.Text = "Jam            :";
-            label4.Click += label4_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(49, 125);
-            label5.Name = "label5";
-            label5.Size = new Size(85, 20);
-            label5.TabIndex = 7;
-            label5.Text = "Harga        :";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(49, 56);
-            label6.Name = "label6";
-            label6.Size = new Size(84, 20);
-            label6.TabIndex = 8;
-            label6.Text = "Tanggal     :";
             // 
             // PemesananForm
             // 

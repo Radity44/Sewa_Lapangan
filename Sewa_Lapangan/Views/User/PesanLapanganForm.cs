@@ -140,13 +140,14 @@ namespace Sewa_Lapangan.Views.User
             {
                 int idJadwal = Convert.ToInt32(dgvPesanan.Rows[e.RowIndex].Cells["IdJadwal"].Value);
 
-                using (var pemesananForm = new PemesananForm(idJadwal, SessionManager.UserId))
+                this.Hide(); // sembunyikan PesanLapanganForm sementara
+                var pemesananForm = new PemesananForm(idJadwal, SessionManager.UserId);
+                var result = pemesananForm.ShowDialog();
+                this.Show(); // tampilkan kembali setelah pemesananForm ditutup
+
+                if (result == DialogResult.OK)
                 {
-                    var result = pemesananForm.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        LoadPesanan();  // hanya reload jika berhasil
-                    }
+                    LoadPesanan(); // refresh data keranjang
                 }
             }
         }

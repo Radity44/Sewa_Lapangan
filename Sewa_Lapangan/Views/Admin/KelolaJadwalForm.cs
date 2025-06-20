@@ -160,6 +160,11 @@ namespace Sewa_Lapangan.Views.Admin
                 MessageBox.Show("Tarif harus berupa angka.");
                 return;
             }
+            if (tarif < 10000)
+            {
+                MessageBox.Show("Tarif minimal adalah Rp10.000.", "Validasi Tarif", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             TimeSpan jamSelesai = jamMulai.Add(TimeSpan.FromHours(durasi));
 

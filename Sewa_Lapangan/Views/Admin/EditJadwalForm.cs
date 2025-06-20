@@ -144,6 +144,11 @@ namespace Sewa_Lapangan.Views.Admin
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (cmbJenisLapangan.SelectedItem == null || cmbNamaLapangan.SelectedItem == null)
+            {
+                MessageBox.Show("Silakan pilih jenis lapangan dan nama lapangan terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var jenisSelected = (JenisLapanganItem)cmbJenisLapangan.SelectedItem;
             var namaSelected = (LapanganItem)cmbNamaLapangan.SelectedItem;
             int idLapanganBaru = namaSelected.Id;

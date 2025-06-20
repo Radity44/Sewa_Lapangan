@@ -74,9 +74,24 @@ namespace Sewa_Lapangan.Views.User
             string namaPemesan = txtNamaPemesan.Text.Trim();
             string noHP = txtNoHP.Text.Trim();
 
-            if (string.IsNullOrEmpty(namaPemesan) || string.IsNullOrEmpty(noHP))
+            // 1️⃣ Validasi input kosong
+            if (!System.Text.RegularExpressions.Regex.IsMatch(noHP, @"^08[0-9]{8,}$"))
             {
-                MessageBox.Show("Nama dan Nomor HP wajib diisi.", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nomor tidak valid.", "Validasi No HP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2️⃣ Validasi nama harus mengandung huruf
+            if (!System.Text.RegularExpressions.Regex.IsMatch(namaPemesan, @"[a-zA-Z]"))
+            {
+                MessageBox.Show("Nama pemesan harus mengandung huruf.", "Validasi Nama", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 3️⃣ Validasi nomor HP: angka, min 2 digit, mulai dengan 08
+            if (!System.Text.RegularExpressions.Regex.IsMatch(noHP, @"^08[0-9]{1,}$"))
+            {
+                MessageBox.Show("Nomor HP harus berupa angka, minimal 2 digit dan dimulai dengan '08'.", "Validasi No HP", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -86,7 +101,7 @@ namespace Sewa_Lapangan.Views.User
                 {
                     conn.Open();
 
-                    // 1️⃣ Ambil tarif dari jadwal lapangan
+                    // 4️⃣ Ambil tarif dari jadwal lapangan
                     int totalBiaya = 0;
                     string queryTarif = "SELECT tarif FROM jadwal_lapangan WHERE id_jadwal = @id_jadwal";
                     using (var cmdTarif = new NpgsqlCommand(queryTarif, conn))
@@ -95,7 +110,7 @@ namespace Sewa_Lapangan.Views.User
                         totalBiaya = Convert.ToInt32(cmdTarif.ExecuteScalar());
                     }
 
-                    // 2️⃣ Insert ke pemesanan
+                    // 5️⃣ Insert ke pemesanan
                     string insertPemesanan = @"
                 INSERT INTO pemesanan (id_user, id_jadwal, id_lapangan, total_biaya, status_bayar, status_pemesanan)
                 VALUES (@id_user, @id_jadwal, 
@@ -112,7 +127,7 @@ namespace Sewa_Lapangan.Views.User
                         idPemesanan = Convert.ToInt32(cmd.ExecuteScalar());
                     }
 
-                    // 3️⃣ Insert ke detail pemesanan
+                    // 6️⃣ Insert ke detail_pemesanan
                     string insertDetail = @"
                 INSERT INTO detail_pemesanan (id_pemesanan, nama_pemesan, nohp_pemesan)
                 VALUES (@id_pemesanan, @nama, @nohp)";
@@ -125,7 +140,7 @@ namespace Sewa_Lapangan.Views.User
                         cmd2.ExecuteNonQuery();
                     }
 
-                    // 4️⃣ Hapus dari cart
+                    // 7️⃣ Hapus dari cart
                     string deleteCart = @"
                 DELETE FROM cart_pemesanan
                 WHERE id_user = @id_user AND id_jadwal = @id_jadwal";
@@ -137,7 +152,7 @@ namespace Sewa_Lapangan.Views.User
                         cmdDel.ExecuteNonQuery();
                     }
 
-                    // 5️⃣ Update status jadwal menjadi 'Terpesan'
+                    // 8️⃣ Update status jadwal
                     string updateStatus = @"
                 UPDATE jadwal_lapangan
                 SET status = 'Terpesan'
@@ -151,7 +166,7 @@ namespace Sewa_Lapangan.Views.User
                 }
 
                 MessageBox.Show("Pemesanan berhasil disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK; // memberi sinyal ke pemanggil
+                this.DialogResult = DialogResult.OK; // agar ShowDialog() bisa menerima sinyal sukses
                 this.Close();
             }
             catch (Exception ex)
@@ -162,8 +177,7 @@ namespace Sewa_Lapangan.Views.User
 
         private void btnback_Click(object sender, EventArgs e)
         {
-            PesanLapanganForm pesanLapangan = new PesanLapanganForm();
-            pesanLapangan.Show();
+            this.DialogResult = DialogResult.Cancel; // atau None, sesuai kebutuhan
             this.Close();
         }
 
@@ -188,6 +202,11 @@ namespace Sewa_Lapangan.Views.User
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }
